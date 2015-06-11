@@ -26,3 +26,5 @@ phpunit.phar
 # Vagrant
 /.vagrant
 /vagrant.yaml
+
+.env
