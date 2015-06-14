@@ -1,6 +1,8 @@
 # Env
 /.env
 /vhost.conf
+.env
+composer.lock
 
 # composer
 /vendor
@@ -26,5 +28,3 @@ phpunit.phar
 # Vagrant
 /.vagrant
 /vagrant.yaml
-
-.env
