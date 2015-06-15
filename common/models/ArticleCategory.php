@@ -60,6 +60,8 @@ class ArticleCategory extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['title'], 'string', 'max' => 512],
             [['slug'], 'unique'],
+            [['keywords'],'string','max'=>100],
+            [['description'],'string','max'=>250],
             [['slug'], 'string', 'max' => 1024],
             ['status', 'integer'],
             ['parent_id', 'exist', 'targetClass' => ArticleCategory::className(), 'targetAttribute' => 'id']
@@ -75,6 +77,8 @@ class ArticleCategory extends \yii\db\ActiveRecord
             'id' => Yii::t('common', 'ID'),
             'slug' => Yii::t('common', 'Slug'),
             'title' => Yii::t('common', 'Title'),
+            'keywords' => Yii::t('common', 'Keywords'),
+            'description'=>Yii::t('common', 'Description'),
             'parent_id' => Yii::t('common', 'Parent Category'),
             'status' => Yii::t('common', 'Active')
         ];

@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Article;
 use common\models\ArticleAttachment;
+use common\models\ArticleCategory;
 use frontend\models\search\ArticleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -24,6 +25,19 @@ class ArticleController extends Controller
             'defaultOrder' => ['created_at' => SORT_DESC]
         ];
         return $this->render('index', ['dataProvider'=>$dataProvider]);
+    }
+
+    /**
+     * @param $category
+     * @return string
+     * @throws \yii\web\NotFoundHttpException
+     */
+    public function actionArticlesCategoryView($category){
+        $category = ArticleCategory::findOne(['slug'=>$category]);
+        if(!$category){
+           throw new NotFoundHttpException;
+        }
+        return $this->render('category_articles',['category'=>$category]);
     }
 
     /**

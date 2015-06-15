@@ -19,6 +19,13 @@ use yii\bootstrap\ActiveForm;
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
 
+    <?php echo $form->field($model, 'keywords')
+        ->hint(Yii::t('backend', 'You should enter keywords through comma'))
+        ->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'description')
+        ->textInput(['maxlength' => true]) ?>
+
     <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
             $categories,
             'id',
