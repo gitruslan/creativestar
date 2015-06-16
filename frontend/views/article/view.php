@@ -10,7 +10,7 @@ $this->registerMetaTag([
     'name'=>'keywords',
     'content'=>$model->keywords
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', $model->category->title), 'url' => [$model->category->slug]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', $model->category->title), 'url' => '/'.$model->category->slug];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content">
