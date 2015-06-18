@@ -3,6 +3,7 @@ return [
     'class'=>'yii\web\UrlManager',
     'enablePrettyUrl'=>true,
     'showScriptName'=>false,
+    'class'=>'frontend\components\LangUrlManager',
     'rules'=> [
         // Pages
         //['pattern'=>'page/<slug>', 'route'=>'page/view'],
