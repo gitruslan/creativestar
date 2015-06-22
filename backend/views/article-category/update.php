@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\ArticleCategory */
+/* @var $categories common\models\ArticleCategory[] */
+/* @var $languages common\models\Lang[] */
 
 $this->title = Yii::t('backend', 'Update {modelClass}: ', [
     'modelClass' => 'Article Category',
@@ -17,6 +19,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
     <?php echo $this->render('_form', [
         'model' => $model,
         'categories' => $categories,
+        'languages' => $languages
     ]) ?>
 
 </div>

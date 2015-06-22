@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'title',
             'status',
+            'lang_id',
 
             [
                 'class' => 'yii\grid\ActionColumn',

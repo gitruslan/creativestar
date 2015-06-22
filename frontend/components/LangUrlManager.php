@@ -2,7 +2,7 @@
 namespace frontend\components;
 
 use yii\web\UrlManager;
-use frontend\models\Lang;
+use common\models\Lang;
 
 class LangUrlManager extends UrlManager
 {

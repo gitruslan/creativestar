@@ -3,7 +3,7 @@ namespace frontend\components;
 
 use Yii;
 use yii\web\Request;
-use frontend\models\Lang;
+use common\models\Lang;
 
 class LangRequest extends Request
 {

@@ -9,6 +9,7 @@
 namespace common\models\query;
 
 use common\models\ArticleCategory;
+use common\models\Lang;
 use yii\db\ActiveQuery;
 
 class ArticleCategoryQuery extends ActiveQuery
@@ -16,9 +17,11 @@ class ArticleCategoryQuery extends ActiveQuery
     /**
      * @return $this
      */
-    public function active()
+    public function active($slug = null)
     {
+        $this->andWhere(['slug'=>$slug]);
         $this->andWhere(['status' => ArticleCategory::STATUS_ACTIVE]);
+        $this->andWhere(['lang_id'=> Lang::getCurrent()->id]);
 
         return $this;
     }

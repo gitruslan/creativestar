@@ -60,6 +60,7 @@ class ArticleCategory extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['title'], 'string', 'max' => 512],
             [['slug'], 'unique'],
+            [['lang_id'],'integer'],
             [['keywords'],'string','max'=>100],
             [['description'],'string','max'=>250],
             [['slug'], 'string', 'max' => 1024],
@@ -76,6 +77,7 @@ class ArticleCategory extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'slug' => Yii::t('common', 'Slug'),
+            'lang_id' => Yii::t('common','Lang Id'),
             'title' => Yii::t('common', 'Title'),
             'keywords' => Yii::t('common', 'Keywords'),
             'description'=>Yii::t('common', 'Description'),
