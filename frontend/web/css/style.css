@@ -97,4 +97,33 @@ a.desc:after {
   padding: 10px 20px;
   margin: 0 0 15px 0;
 }
+
+
+/* Nav styles */
+.navbar-wrapper{
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    background-color: #F5AE33;
+    border-color: #F5AE33;
+    height: 160px;
+}
+.navbar-center-logo {
+    width:200px;
+    height:50px;
+    margin:80px auto;
+    text-align: center;
+}
+.navbar-center-menu ul{
+    margin: -75px auto;
+    width:700px;
+    height:61px;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+.navbar-center-menu ul li{
+    display: inline;
+    margin:0 5px 0 5px;
+}
+
 /*# sourceMappingURL=style.map */

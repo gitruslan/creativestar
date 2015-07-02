@@ -202,7 +202,29 @@ It will allow access to you application only for authentificated users.
 2. Use it:
 ```php
 <?php echo DbMenu::widget(['key' => 'key-from-backend']) ?>
+for multi lang labels
+    protected function renderItem($item)
+    {
+        if (isset($item['url'])) {
+            $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
+            return strtr($template, [
+                '{url}' => Html::encode(Url::to($item['url'])),
+                '{label}' => isset($item['multiLangLabel']) ?
+                        Yii::t($item['multiLangLabel']['category'],
+                               $item['multiLangLabel']['message']
+                        ) : $item['label'],
+            ]);
+        } else {
+            $template = ArrayHelper::getValue($item, 'template', $this->labelTemplate);
+
+            return strtr($template, [
+                '{label}' => $item['label'],
+            ]);
+        }
+    }
+
 ```
+
 
 ### Widgets
 - [WYSIWYG Redactor widget](https://github.com/asofter/yii2-imperavi-redactor)  
