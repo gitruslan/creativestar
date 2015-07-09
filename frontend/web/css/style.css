@@ -162,11 +162,32 @@ a.desc:after {
     background:url("/img/active_main_menu.png") ;
 }
 
-
 .content-wrapper{
     width:100%;
     margin-top:-2px;
     padding-top: 96px;
     background: url("/img/middle_bg.png") repeat-x;
+}
+
+.carousel {
+    width:695px;
+    height:451px;
+    margin:0 auto;
+    background: url("/img/carousel_bg.png");
+}
+.carousel-inner{
+    padding: 20px 0 0 18px;
+}
+.carousel-control.left,.carousel-control.right{
+    background-image:none;
+}
+
+.text-on-main{
+    width:697px;
+    height:170px;
+    margin:20px auto;
+    padding:15px;
+    background: url("/img/messages_bg.png");
+
 }
 /*# sourceMappingURL=style.map */
