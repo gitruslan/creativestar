@@ -9,6 +9,9 @@ use \common\models\WidgetMenu;
 use yii\base\InvalidConfigException;
 use Yii;
 use yii\widgets\Menu;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * Class DbMenu
@@ -40,6 +43,31 @@ class DbMenu extends Menu
             }
             $this->items =json_decode($model->items, true);
             Yii::$app->cache->set($cacheKey, $this->items, 60*60*24);
+        }
+    }
+
+    /**
+     * Reloaded function , it needs for multi lang items
+     * @param array $item
+     * @return string
+     */
+    protected function renderItem($item)
+    {
+        if (isset($item['url'])) {
+            $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
+            return strtr($template, [
+                '{url}' => Html::encode(Url::to($item['url'])),
+                '{label}' => isset($item['multiLangLabel']) ?
+                        Yii::t($item['multiLangLabel']['category'],
+                            $item['multiLangLabel']['message']
+                        ) : $item['label'],
+            ]);
+        } else {
+            $template = ArrayHelper::getValue($item, 'template', $this->labelTemplate);
+
+            return strtr($template, [
+                '{label}' => $item['label'],
+            ]);
         }
     }
 }
