@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\ArticleCategory;
+use common\models\Lang;
 use backend\models\search\ArticleCategorySearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -66,12 +67,16 @@ class ArticleCategoryController extends Controller
         $categories = ArticleCategory::find()->noParents()->all();
         $categories = ArrayHelper::map($categories, 'id', 'title');
 
+        $languages = Lang::find()->all();
+        $languages = ArrayHelper::map($languages,'id','name');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'categories' => $categories,
+                'languages' =>  $languages
             ]);
         }
     }
@@ -89,6 +94,10 @@ class ArticleCategoryController extends Controller
         $categories = ArticleCategory::find()->noParents()->andWhere(['not in', 'id', $id])->all();
         $categories = ArrayHelper::map($categories, 'id', 'title');
 
+        $languages = Lang::find()->all();
+        $languages = ArrayHelper::map($languages,'id','name');
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -96,6 +105,7 @@ class ArticleCategoryController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'categories' => $categories,
+                'languages' =>  $languages
             ]);
         }
     }

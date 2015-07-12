@@ -33,7 +33,7 @@ class ArticleController extends Controller
      * @throws \yii\web\NotFoundHttpException
      */
     public function actionArticlesCategoryView($category){
-        $category = ArticleCategory::findOne(['slug'=>$category]);
+        $category = ArticleCategory::find()->active($category)->one();
         if(!$category){
            throw new NotFoundHttpException;
         }

@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\ArticleCategory */
 /* @var $categories common\models\ArticleCategory[] */
+/* @var $languages common\models\Lang[] */
 
 $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Article Category',
@@ -13,7 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo $this->render('_form', [
         'model' => $model,
-        'categories' => $categories
+        'categories' => $categories,
+        'languages' => $languages
     ]) ?>
 
 </div>

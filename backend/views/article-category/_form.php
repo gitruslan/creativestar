@@ -7,7 +7,11 @@ use yii\bootstrap\ActiveForm;
 /* @var $model common\models\ArticleCategory */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $categories array */
+/* @var $languages array */
+
 ?>
+
+
 
 <div class="article-category-form">
 
@@ -27,6 +31,8 @@ use yii\bootstrap\ActiveForm;
         ->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'parent_id')->dropDownList($categories, ['prompt'=>'']) ?>
+
+    <?php echo $form->field($model,'lang_id')->dropDownList($languages,[]); ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
