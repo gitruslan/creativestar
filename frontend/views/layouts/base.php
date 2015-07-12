@@ -25,8 +25,9 @@ use common\widgets\DbMenu;
                 <div class="navbar-center-menu">
                     <?=DBMenu::widget([
                         'key'=>'frontend-main-menu',
+                        'activeCssClass'=>'active-menu-item',
                         'options'=>[
-                            'tag'=>'ul'
+                            'tag'=>'ul',
                         ]
                     ]);?>
                 </div>
@@ -36,11 +37,23 @@ use common\widgets\DbMenu;
             <?php echo $content ?>
         </div>
     </div>
-
     <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; Creativestar <?php echo date('Y') ?></p>
-            <p class="pull-right"><?php echo Yii::powered() ?></p>
+        <div class="footer-container">
+            <div class="footer-star"></div>
+            <div class="footer-menu">
+                <div class="footer-menu-line"></div>
+                    <ul><li><a href="/" class="footer-menu-active">Home</a></li>
+                        <li><a href="/games">Games</a></li>
+                        <li><a href="/about">About us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/site/contact">Contact</a></li>
+                    </ul>
+            </div>
+            <div class="footer-owners">
+                <div class="copy">&copy; Creativestar <?php echo date('Y') ?></div>
+                <div class="reserved">ALL rights reserved</div>
+            </div>
         </div>
     </footer>
+
 <?php $this->endContent() ?>

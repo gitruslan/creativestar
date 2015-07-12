@@ -24,6 +24,7 @@
 html,
 body {
   height: 100%;
+  background-color:#39e5f9;
 }
 /*.wrap {*/
   /*min-height: 100%;*/
@@ -34,12 +35,12 @@ body {
 /*.wrap > .container {*/
   /*padding: 70px 15px 20px;*/
 /*}*/
-.footer {
-  height: 60px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-}
+/*.footer {*/
+  /*height: 60px;*/
+  /*background-color: #f5f5f5;*/
+  /*border-top: 1px solid #ddd;*/
+  /*padding-top: 20px;*/
+/*}*/
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -99,7 +100,7 @@ a.desc:after {
 }
 
 .wrap{
-   background-color:#39e5f9;
+   min-height:300px;
 }
 /* Nav styles */
 .navbar-wrapper{
@@ -141,8 +142,8 @@ a.desc:after {
     height:120px;
     position: absolute;
     background: url("/img/menu_blick.png");
-    margin: -60px 0 0 185px;
-    z-index:1001;
+    margin: -56px 0 0 189px;
+    z-index:999;
 }
 .navbar-center-menu ul li a{
     font-family: Arial;
@@ -150,7 +151,7 @@ a.desc:after {
     text-transform: uppercase;
     color:#7a8790;
     font-weight: bold;
-    line-height: 68.6px;
+    line-height: 70.6px;
     text-decoration: none;
     width:94px;
     height: 57px;
@@ -159,14 +160,51 @@ a.desc:after {
 }
 .navbar-center-menu ul li a:hover, .active-menu-item{
     color:#f1b116;
-    background:url("/img/active_main_menu.png") ;
+    background:url("/img/active_main_menu.png") center center;
 }
 
 .content-wrapper{
     width:100%;
+    height:100%;
     margin-top:-2px;
     padding-top: 96px;
     background: url("/img/middle_bg.png") repeat-x;
+}
+
+.carousel-wrapper{
+    min-width:800px;
+    position: relative;
+}
+
+.carousel-left-top-image{
+    width:233px;
+    height:227px;
+    position: absolute;
+    background: url("/img/slider_left_top.png");
+    margin: -121px 0 0 85px;
+}
+.carousel-left-bottom-image{
+    width:503px;
+    height:522px;
+    position: absolute;
+    background: url("/img/slider_left_bottom.png");
+    margin: 47px 0px 0 3px;
+    z-index: 2;
+}
+.carousel-right-top-image{
+    width:288px;
+    height:338px;
+    position: absolute;
+    background: url("/img/slider_top_right.png");
+    margin: -206px 0px 0px 881px;
+}
+.carousel-right-bottom-image{
+    width:196px;
+    height:262px;
+    position: absolute;
+    background: url("/img/slider_bottom_right.png");
+    z-index: 1;
+    margin: 222px 0px 0px 869px;
 }
 
 .carousel {
@@ -174,20 +212,91 @@ a.desc:after {
     height:451px;
     margin:0 auto;
     background: url("/img/carousel_bg.png");
+
 }
 .carousel-inner{
     padding: 20px 0 0 18px;
+    -webkit-box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
+    box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
 }
 .carousel-control.left,.carousel-control.right{
     background-image:none;
+    z-index:2;
 }
-
 .text-on-main{
-    width:697px;
-    height:170px;
-    margin:20px auto;
+    width: 700px;
+    height: 175px;
+    margin:27px auto;
     padding:15px;
-    background: url("/img/messages_bg.png");
+    background: url("/img/messages_bg_full.png");
+    position: relative;
+    z-index: 1;
 
+}
+.footer{
+    width:100%;
+    height:100px;
+}
+.footer-container{
+    width:662px;
+    height:100px;
+    margin:0 auto;
+    position: relative;
+}
+.footer-star{
+    width:418px;
+    height:236px;
+    background: url("/img/footer_star.png");
+    position: absolute;
+    margin: -104px 0px 0 415px;
+}
+.footer-menu{
+    position: absolute;
+    z-index:2;
+}
+.footer-menu-line{
+    width:662px;
+    height:12px;
+    margin-top: 30px;
+    background: url("/img/line_under_footer_menu.png");
+}
+.footer-menu ul{
+    list-style-type: none;
+    margin: 13px 0 0 120px;
+    padding: 0;
+    overflow: hidden;
+
+}
+.footer-menu ul li{
+    float:left;
+    margin: 0 6px;
+}
+.footer-menu ul li a{
+    display: block;
+    width:70px;
+    height:35px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 10px;
+    text-transform: uppercase;
+    color:#7a8790;
+    line-height: 37px;
+    text-decoration: none;
+}
+.footer-menu-active{
+    background: url("/img/active_footer_menu.png") center center;
+}
+.footer-menu ul li a:hover{
+    background: url("/img/active_footer_menu.png") center center;
+}
+.footer-owners{
+    width:200px;
+    font-family: Arial;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin:100px 0 0 250px;
+    position: absolute;
+    z-index:2;
 }
 /*# sourceMappingURL=style.map */
