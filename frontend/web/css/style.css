@@ -101,24 +101,27 @@ a.desc:after {
 
 .wrap{
    min-height:300px;
+   /*height:80%;*/
 }
 /* Nav styles */
 .navbar-wrapper{
     background-color: #f1b116;
-    height: 160px;
+    height: 104px;
+    position: relative;
+    z-index: 1;
 }
 .navbar-shadow {
-    width:1200px;
-    height:159px;
+    width:1164px;
+    height:104px;
     margin: 0 auto;
     background: url("/img/header_shadow_big.png");
-    padding-top: 32px;
+    /*padding-top: 32px;*/
     text-align: center;
     position: relative;
 }
 .navbar-center-logo {
-    width:164px;
-    height:98px;
+    width:127px;
+    height:86px;
     margin:0 auto;
     background: url("/img/logo.png");
 }
@@ -126,7 +129,7 @@ a.desc:after {
     width:695px;
     height:62px;
     padding: 0;
-    margin-left:242px;
+    margin-left:234px;
     list-style-type: none;
     text-align: center;
     position: absolute;
@@ -167,44 +170,54 @@ a.desc:after {
     width:100%;
     height:100%;
     margin-top:-2px;
-    padding-top: 96px;
+    padding-top: 67px;
     background: url("/img/middle_bg.png") repeat-x;
 }
 
 .carousel-wrapper{
     min-width:800px;
     position: relative;
+    /*border:1px solid black;*/
 }
 
+.carousel-left-blick{
+    width:115px;
+    height:89px;
+    position: absolute;
+    background: url("/img/carousel_blick.png");
+    margin: 6px 0 0 181px;
+    z-index: 2;
+}
 .carousel-left-top-image{
-    width:233px;
-    height:227px;
+    width:156px;
+    height:183px;
     position: absolute;
     background: url("/img/slider_left_top.png");
-    margin: -121px 0 0 85px;
+    margin:-114px 0 0 127px;
 }
 .carousel-left-bottom-image{
-    width:503px;
-    height:522px;
+    width:428px;
+    height:431px;
     position: absolute;
     background: url("/img/slider_left_bottom.png");
-    margin: 47px 0px 0 3px;
+    margin: 112px 0px 0 51px;
     z-index: 2;
 }
 .carousel-right-top-image{
-    width:288px;
-    height:338px;
+    width:215px;
+    height:261px;
     position: absolute;
     background: url("/img/slider_top_right.png");
-    margin: -206px 0px 0px 881px;
+    margin: -159px 0px 0px 890px;
+    z-index: 1;
 }
 .carousel-right-bottom-image{
-    width:196px;
-    height:262px;
+    width:183px;
+    height:261px;
     position: absolute;
     background: url("/img/slider_bottom_right.png");
-    z-index: 1;
-    margin: 222px 0px 0px 869px;
+    z-index: 2;
+    margin: 222px 0px 0px 855px;
 }
 
 .carousel {
@@ -212,27 +225,59 @@ a.desc:after {
     height:451px;
     margin:0 auto;
     background: url("/img/carousel_bg.png");
+    z-index: 1;
 
 }
 .carousel-inner{
     padding: 20px 0 0 18px;
-    -webkit-box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
-    box-shadow: 6px 9px 60px -5px rgba(0,0,0,0.75);
+    /*-webkit-box-shadow: -2px 10px 108px 4px rgba(25,98,108,1);*/
+    /*-moz-box-shadow: -2px 10px 108px 4px rgba(25,98,108,1);*/
+    /*box-shadow: -2px 10px 108px 4px rgba(25,98,108,1);*/
+}
+.carousel .carousel-indicators li {
+    width: 28px;
+    height: 38px;
+    background: url("/img/sprite_slider.png");
+    background-position: 82% 10%;
+    border:none;
+    margin:0;
+
+}
+.carousel .carousel-indicators li.active, .carousel .carousel-indicators li:hover {
+    margin: 0;
+    background-position: 15% 10%;
+}
+.carousel-control .glyphicon-chevron-left{
+    width: 66px;
+    height: 78px;
+    margin-top: -40px;
+    background:url("/img/left_arrow.png");
+    font-size: 0px;
+}
+.carousel-control .glyphicon-chevron-right{
+    width: 74px;
+    height: 81px;
+    margin-top: -40px;
+    background:url("/img/right_arrow.png");
+    font-size: 0px;
 }
 .carousel-control.left,.carousel-control.right{
     background-image:none;
     z-index:2;
 }
 .text-on-main{
-    width: 700px;
-    height: 175px;
-    margin:27px auto;
-    padding:15px;
-    background: url("/img/messages_bg_full.png");
+    width: 709px;
+    height: 123px;
+    margin:5px auto;
+    padding:17px;
+    background: url("/img/messages_bg.png");
     position: relative;
     z-index: 1;
-
+}
+.text-on-main p{
+    color:#084349;
+    font-size:19px;
+    text-align: center;
 }
 .footer{
     width:100%;
@@ -278,9 +323,9 @@ a.desc:after {
     height:35px;
     text-align: center;
     font-family: Arial;
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
-    color:#7a8790;
+    color:#045F6A;
     line-height: 37px;
     text-decoration: none;
 }
