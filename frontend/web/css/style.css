@@ -175,7 +175,7 @@ a.desc:after {
 }
 
 .carousel-wrapper{
-    min-width:800px;
+    min-width:700px;
     position: relative;
     /*border:1px solid black;*/
 }
@@ -223,7 +223,8 @@ a.desc:after {
 .carousel {
     width:695px;
     height:451px;
-    margin:0 auto;
+    position:relative;
+    margin-left:223px;
     background: url("/img/carousel_bg.png");
     z-index: 1;
 
