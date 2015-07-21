@@ -2,7 +2,6 @@
 /* @var $this yii\web\View */
 $this->title = Yii::$app->name;
 ?>
-<div class="carousel-wrapper">
        <div class="carousel-left-blick"></div>
        <div class="carousel-left-top-image"></div>
        <div class="carousel-left-bottom-image"></div>
@@ -19,6 +18,5 @@ $this->title = Yii::$app->name;
         ]) ?>
 
     </div>
-</div>
 
 
