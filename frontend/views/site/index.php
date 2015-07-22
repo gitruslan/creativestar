@@ -4,7 +4,6 @@ $this->title = Yii::$app->name;
 ?>
        <div class="carousel-left-blick"></div>
        <div class="carousel-left-top-image"></div>
-       <div class="carousel-left-bottom-image"></div>
        <div class="carousel-right-top-image"></div>
        <div class="carousel-right-bottom-image"></div>
 
