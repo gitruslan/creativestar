@@ -175,7 +175,7 @@ a.desc:after {
     height:100%;
     margin:0 auto;
     padding-top: 67px;
-    text-align: center;
+    /*text-align: center;*/
     position: relative;
 }
 
@@ -354,4 +354,40 @@ a.desc:after {
     position: absolute;
     z-index:2;
 }
+#article-index{
+    width: 715px;
+    margin: 0 auto;
+    padding-bottom: 82px;
+}
+.article-title-games{
+    font-family: Arial;
+    font-size: 21px;
+    font-variant: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:white;
+    margin:0 0 5px 0;
+    padding:0px;
+}
+
+.article-right-text{
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.article-more a{
+    font-family: Arial;
+    font-size: 14px;
+    font-variant: normal;
+    font-weight: bold;
+    color:white;
+    text-decoration: underline;
+}
+.article-underline{
+    width:715px;
+    height:52px;
+    background:url('/img/games_line.png');
+    margin-top:50px;
+}
+
 /*# sourceMappingURL=style.map */

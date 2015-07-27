@@ -58,7 +58,7 @@ class ArticleController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'categories' => ArticleCategory::find()->active()->all(),
+                'categories' => ArticleCategory::find()->activeForAdmin()->all(),
             ]);
         }
     }
@@ -78,7 +78,7 @@ class ArticleController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'categories' => ArticleCategory::find()->active()->all(),
+                'categories' => ArticleCategory::find()->activeForAdmin()->all(),
             ]);
         }
     }

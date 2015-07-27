@@ -29,6 +29,17 @@ class ArticleCategoryQuery extends ActiveQuery
     /**
      * @return $this
      */
+    public function activeForAdmin($slug = null)
+    {
+        $this->andWhere(['status' => ArticleCategory::STATUS_ACTIVE]);
+        $this->andWhere(['lang_id'=> Lang::getCurrent()->id]);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
     public function noParents()
     {
         $this->andWhere('{{%article_category}}.parent_id IS NULL');

@@ -1,0 +1,5 @@
+PUZZLE & DRAGONS  - white Arial bold uppercase 21 pt
+right text - black Arial Regular 16 pt 
+MORE - white Arial Bold 14 pt 
+
+Pagination -  18.63 Arial Bold #3c3b40/ white 

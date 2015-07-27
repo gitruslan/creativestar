@@ -12,9 +12,8 @@
     $this->params['breadcrumbs'][] = $category->title;
 ?>
 <div id="article-index">
-    <h1><?php echo Yii::t('frontend', $category->title); ?></h1>
     <?php echo \backend\widgets\ListArticles::widget([
         'articles'=> $category->articles,
-        'articleView'=>'_articlesInCategory'
+        'articleView'=>'_articles_in_category'
     ])?>
 </div>
