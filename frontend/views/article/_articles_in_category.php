@@ -23,6 +23,9 @@ use yii\helpers\Html;
             ) ?>
         <?php endif; ?>
         <div class="article-content">
+            <? if ($article->category->slug == 'blog'):?>
+                <div class="article-date"><?=date('d M Y',$article->published_at)?></div>
+            <? endif;?>
             <div class="article-right-text">
                 <?php echo \yii\helpers\StringHelper::truncate($article->body, 150)?>
             </div>
