@@ -400,6 +400,8 @@ a.desc:after {
     width: 663px;
     margin: 0 auto;
     margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
 }
 .article-item-title-blog{
     font-family: Arial;
