@@ -20,15 +20,7 @@ use yii\helpers\Html;
             'url'=>['/file-storage/upload'],
         ]
     ) ?>
-     <?php echo $form->field($model, 'images')->widget(
-        \trntv\filekit\widget\Upload::className(),
-        [
-            'url'=>['/file-storage/upload'],
-            'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
-            'maxNumberOfFiles' => 10
-        ]
-    ) ?>
+
 
 <!--    --><?php //echo $form->field($model, 'top_left_img')->widget(
 //        \trntv\filekit\widget\Upload::className(),
@@ -71,6 +63,16 @@ use yii\helpers\Html;
                 'removeEmptyTags'=>false
             ]
         ]) ?>
+
+    <?php echo $form->field($model, 'images')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'sortable' => true,
+            'maxFileSize' => 10000000, // 10 MiB
+            'maxNumberOfFiles' => 10
+        ]);
+    ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 

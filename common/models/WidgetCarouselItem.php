@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\CacheInvalidateBehavior;
 use trntv\filekit\behaviors\UploadBehavior;
+use common\behaviors\AddUploadBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -82,10 +83,9 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'typeAttribute' => 'type'
             ],
             [
-                'class' => UploadBehavior::className(),
+                'class' => AddUploadBehavior::className(),
                 'attribute' => 'images',
                 'uploadRelation' => 'widgetCarouselItemImages',
-                'multiple' => true,
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
