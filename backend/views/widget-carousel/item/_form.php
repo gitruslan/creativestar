@@ -64,7 +64,7 @@ use yii\helpers\Html;
             ]
         ]) ?>
 
-    <?php echo $form->field($model, 'images')->widget(
+    <?php echo $form->field($model, 'additionalImages')->widget(
         \trntv\filekit\widget\Upload::className(),
         [
             'url' => ['/file-storage/upload'],

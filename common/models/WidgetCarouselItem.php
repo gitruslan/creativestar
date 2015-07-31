@@ -33,7 +33,10 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
      */
     public $image;
 
-    public $images;
+    /**
+     * @var array
+     */
+    public $additionalImages;
 
     /**
      * @var
@@ -84,12 +87,13 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
             ],
             [
                 'class' => AddUploadBehavior::className(),
-                'attribute' => 'images',
+                'attribute' => 'additionalImages',
                 'uploadRelation' => 'widgetCarouselItemImages',
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
-                'nameAttribute' => 'images',
+                'sizeAttribute' => 'size',
+                'nameAttribute' => 'name',
             ],
 
 //            [
