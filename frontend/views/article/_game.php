@@ -15,7 +15,7 @@
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content">
-    <div class="article-item-game">ss
+    <div class="article-item-game">
         <div class="article-item-title-game">
             <div class="game-title"><?php echo $model->title ?></div>
         </div>
