@@ -4,7 +4,7 @@ namespace common\models;
 
 use common\behaviors\CacheInvalidateBehavior;
 use trntv\filekit\behaviors\UploadBehavior;
-use common\behaviors\AddUploadBehavior;
+use common\behaviors\CarouselItemImagesBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -37,6 +37,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
      * @var array
      */
     public $additionalImages;
+    public $additionalImages1;
 
     /**
      * @var
@@ -86,53 +87,32 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'typeAttribute' => 'type'
             ],
             [
-                'class' => AddUploadBehavior::className(),
-                'attribute' => 'additionalImages',
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'bottom_left_img',
                 'uploadRelation' => 'widgetCarouselItemImages',
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
-                'sizeAttribute' => 'size',
-                'nameAttribute' => 'name',
+                'nameAttribute' => 'bottom_left_img',
             ],
-
-//            [
-//                'class' => UploadBehavior::className(),
-//                'attribute' => 'top_left_img',
-//                'uploadRelation' => 'WidgetCarouselItemImages',
-//                'pathAttribute' => 'path',
-//                'baseUrlAttribute' => 'base_url',
-//                'sizeAttribute' => 'size',
-//                'typeAttribute' => 'type',
-//                'nameAttribute' => 'top_left_img',
-//            ],
-//            [
-//                'class' => UploadBehavior::className(),
-//                'attribute' => 'bottom_left_img',
-//                'uploadRelation' => 'WidgetCarouselItemImages',
-//                'pathAttribute' => 'path',
-//                'baseUrlAttribute' => 'base_url',
-//                'typeAttribute' => 'type',
-//                'nameAttribute' => 'bottom_left_img',
-//            ],
-//            [
-//                'class' => UploadBehavior::className(),
-//                'attribute' => 'top_right_img',
-//                'uploadRelation' => 'WidgetCarouselItemImages',
-//                'pathAttribute' => 'path',
-//                'baseUrlAttribute' => 'base_url',
-//                'typeAttribute' => 'type',
-//                'nameAttribute' => 'top_right_img',
-//            ],
-//            [
-//                'class' => UploadBehavior::className(),
-//                'attribute' => 'bottom_right_img',
-//                'uploadRelation' => 'WidgetCarouselItemImages',
-//                'pathAttribute' => 'path',
-//                'baseUrlAttribute' => 'base_url',
-//                'typeAttribute' => 'type',
-//                'nameAttribute' => 'bottom_right_img',
-//            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'top_right_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'top_right_img',
+            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'bottom_right_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'bottom_right_img',
+            ],
             'cacheInvalidate'=>[
                 'class' => CacheInvalidateBehavior::className(),
                 'keys' => [
@@ -174,6 +154,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
             'top_right_img' => Yii::t('common', 'Top Right Image'),
             'bottom_left_img' => Yii::t('common', 'Bottom Left Image'),
             'bottom_right_img' => Yii::t('common', 'Bottom Right Image'),
+            'additionalImages1' => Yii::t('common', 'additionalImages1'),
             'base_url' => Yii::t('common', 'Base URL'),
             'path' => Yii::t('common', 'Path'),
             'type' => Yii::t('common', 'File Type'),

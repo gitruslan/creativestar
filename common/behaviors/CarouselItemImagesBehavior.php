@@ -13,7 +13,7 @@ use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
-class AddUploadBehavior extends Behavior {
+class CarouselItemImagesBehavior extends Behavior {
     /**
      * @var ActiveRecord
      */
@@ -91,7 +91,7 @@ class AddUploadBehavior extends Behavior {
      */
     protected $deletePaths;
     /**
-     * @var \trntv\filekit\Storage
+     * @var
      */
     protected $storage;
     /**
@@ -100,7 +100,7 @@ class AddUploadBehavior extends Behavior {
 
     public function events()
     {
-        return $additionalEvents = [
+        return [
             ActiveRecord::EVENT_AFTER_FIND => 'afterFindAdditional',
             ActiveRecord::EVENT_AFTER_INSERT => 'afterInsertAdditional',
             ActiveRecord::EVENT_AFTER_UPDATE => 'afterUpdateAdditional',
@@ -144,6 +144,19 @@ class AddUploadBehavior extends Behavior {
         }
     }
 
+
+    /**
+     * @return array
+     */
+    protected function getUploaded()
+    {
+        //
+        $files = $_POST['WidgetCarouselItem'][$this->attribute];//$this->owner->{$this->attribute};
+        //print_r($this->attribute);
+        return $files ? [$files]: [];
+    }
+
+
     /**
      * @throws \Exception
      */
@@ -151,6 +164,10 @@ class AddUploadBehavior extends Behavior {
     {
 
         $filesPaths = ArrayHelper::getColumn($this->getUploaded(), 'path');
+//        echo "<pre>";
+//         print_r($filesPaths);
+//        echo ("</pre>");
+
         $models = $this->owner->getRelation($this->uploadRelation)->all();
         $modelsPaths = ArrayHelper::getColumn($models, $this->getAttributeField('path'));
         $newFiles = [];
@@ -240,15 +257,6 @@ class AddUploadBehavior extends Behavior {
         }
         return $this->storage;
 
-    }
-
-    /**
-     * @return array
-     */
-    protected function getUploaded()
-    {
-        $files = $_POST['WidgetCarouselItem'][$this->attribute];//$this->owner->{$this->attribute};
-        return $files ?: [];
     }
 
     /**

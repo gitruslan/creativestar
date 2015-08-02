@@ -22,30 +22,30 @@ use yii\helpers\Html;
     ) ?>
 
 
-<!--    --><?php //echo $form->field($model, 'top_left_img')->widget(
-//        \trntv\filekit\widget\Upload::className(),
-//        [
-//            'url'=>['/file-storage/upload'],
-//        ]
-//    ) ?>
-<!--    --><?php //echo $form->field($model, 'bottom_left_img')->widget(
-//        \trntv\filekit\widget\Upload::className(),
-//        [
-//            'url'=>['/file-storage/upload'],
-//        ]
-//    ) ?>
-<!--    --><?php //echo $form->field($model, 'top_right_img')->widget(
-//        \trntv\filekit\widget\Upload::className(),
-//        [
-//            'url'=>['/file-storage/upload'],
-//        ]
-//    ) ?>
-<!--    --><?php //echo $form->field($model, 'bottom_right_img')->widget(
-//        \trntv\filekit\widget\Upload::className(),
-//        [
-//            'url'=>['/file-storage/upload'],
-//        ]
-//    ) ?>
+    <?php echo $form->field($model, 'top_left_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'bottom_left_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'top_right_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'bottom_right_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
     </div>
     <?php echo $form->field($model, 'order')->textInput() ?>
 
@@ -63,16 +63,6 @@ use yii\helpers\Html;
                 'removeEmptyTags'=>false
             ]
         ]) ?>
-
-    <?php echo $form->field($model, 'additionalImages')->widget(
-        \trntv\filekit\widget\Upload::className(),
-        [
-            'url' => ['/file-storage/upload'],
-            'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
-            'maxNumberOfFiles' => 10
-        ]);
-    ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
