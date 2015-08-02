@@ -422,4 +422,172 @@ a.desc:after {
    margin:10px auto;
 }
 
+.article-item-blog{
+    width: 663px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+.article-item-game{
+    width: 740px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+.article-item-title-game{
+    font-family: Arial;
+    font-size: 21px;
+    font-variant: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:white;
+    width:735px;
+    height:93px;
+    margin:auto;
+    background: url('/img/title_games_bg.png');
+    margin:0px;
+    padding: 30px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.games-underline{
+    width:760px;
+    height:59px;
+    margin: -12px 0px;
+    background: url('/img/games_undeline.png') center center no-repeat;
+}
+.article-item-body-game{
+    width: 709px;
+    margin: auto;
+    font-size: 16px;
+}
+.article-item-image-game{
+    width: 710px;
+    height: 440px;
+    margin: auto;
+    margin-top: -24px;
+}
+
+.about-us-wrapper{
+    width:754px;
+    height:308px;
+    margin:0 auto;
+    padding: 30px 26px;
+    margin-bottom:120px;
+    background: url('/img/about_us_bg.png');
+    color: #084349;
+    font-size: 19px;
+    position: relative;
+    top: 50px;
+    z-index:3;
+}
+.about-us-wrapper p{
+    margin:0px;
+    padding:0px;
+}
+.aboutus-right-img{
+    width:174px;
+    height:278px;
+    background:url('/img/about_us_right_img.png');
+    position: absolute;
+    left: 700px;
+    top: -8px;
+}
+.aboutus-left-img{
+    width:152px;
+    height:232px;
+    background:url('/img/about_us_left_img.png');
+    position: absolute;
+    left: -68px;
+    top: -39px;
+
+}
+.aboutus-blick-img{
+    width: 81px;
+    height: 85px;
+    background: url('/img/about_us_blick.png');
+    position: absolute;
+    left: -11px;
+    top: 345px;
+    z-index: 4;
+}
+
+.site-contact{
+    width:696px;
+    height: 631px;
+    margin:0 auto;
+    margin-top:-10px;
+    margin-bottom:0px;
+    background: url('/img/contact_bg.png');
+}
+
+.site-contact .form-contact{
+    width:600px;
+    margin:0 auto;
+    margin-top: 40px;
+}
+.form-contact label{
+    font-family: Arial;
+    font-size: 19px;
+    color:#ffffff;
+    font-weight: bold;
+}
+#contactform-name,#contactform-email,#contactform-subject{
+    height:40px;
+}
+#contactform-name,#contactform-email,#contactform-subject,#contactform-body{
+    background-color: #c0f3f9;
+    font-family: Arial;
+    font-size: 19px;
+    color:#063036;
+}
+.form-contact .contact-button{
+    width: 149px;
+    height: 53px;
+    background: url('/img/contact_button.png');
+    margin:5px 0 0 215px;
+    border:none;
+    outline: none;
+    font-family: Arial;
+    font-size: 19px;
+    color:#8a7417;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.form-contact .help-block{
+    margin: 0px;
+    padding: 0px;
+    display: none;
+}
+.social-buttons{
+    width:373px;
+    height:100px;
+    margin: auto;
+    margin-top: 60px;
+    text-align: center;
+}
+.fc-icon,.tw-icon,.yt-icon{
+    width:100px;
+    height:100px;
+    margin-right:20px;
+    display: inline-block;
+    cursor:pointer;
+}
+.fc-icon:hover,.tw-icon:hover,.yt-icon:hover{
+    opacity: 0.5;
+}
+.fc-icon {
+    background:url('/img/social_icon_contact.png') 0 0;
+}
+.tw-icon {
+    background:url('/img/social_icon_contact.png') 235px 0;
+}
+.yt-icon {
+    background:url('/img/social_icon_contact.png') 100px 0;
+}
+
+
 /*# sourceMappingURL=style.map */

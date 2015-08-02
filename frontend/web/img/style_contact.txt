@@ -1,0 +1,6 @@
+button tex - 8a7417 Arial bold uppercase
+
+input text - 19pt #063036
+label text - arial bold 19pt white
+input bg-color - #c0f3f9
+ 

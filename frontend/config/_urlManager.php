@@ -7,7 +7,7 @@ return [
     'rules'=> [
         // Pages
         //['pattern'=>'page/<slug>', 'route'=>'page/view'],
-        ['pattern'=>'<slug:(about)>','route'=>'page/view'],
+        ['pattern'=>'<slug:(about-us)>','route'=>'page/view'],
 
         // Articles
         ['pattern'=>'article/index', 'route'=>'article/index'],

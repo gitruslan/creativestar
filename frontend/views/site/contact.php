@@ -11,23 +11,20 @@ $this->title = 'Contacts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
-    <h1><?php echo Html::encode($this->title) ?></h1>
-
     <div class="row">
-        <div class="col-lg-5">
+        <div class="form-contact">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
                 <?php echo $form->field($model, 'name') ?>
                 <?php echo $form->field($model, 'email') ?>
                 <?php echo $form->field($model, 'subject') ?>
-                <?php echo $form->field($model, 'body')->textArea(['rows' => 6]) ?>
-                <?php echo $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                ]) ?>
-                <div class="form-group">
-                    <?php echo Html::submitButton(Yii::t('frontend', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                </div>
+                <?php echo $form->field($model, 'body')->textArea(['rows' => 7]) ?>
+                <?php echo Html::submitButton(Yii::t('frontend', 'Submit'), ['class' => 'contact-button', 'name' => 'contact-button']) ?>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-
+</div>
+<div class="social-buttons">
+   <div class="fc-icon"></div>
+   <div class="tw-icon"></div>
+   <div class="yt-icon"></div>
 </div>
