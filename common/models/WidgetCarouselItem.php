@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\CacheInvalidateBehavior;
 use trntv\filekit\behaviors\UploadBehavior;
+use common\behaviors\CarouselItemImagesBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -33,6 +34,32 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
     public $image;
 
     /**
+     * @var array
+     */
+    public $additionalImages;
+    public $additionalImages1;
+
+    /**
+     * @var
+     */
+    public $top_left_img;
+
+    /**
+     * @var
+     */
+    public $bottom_left_img;
+
+    /**
+     * @var
+     */
+    public $top_right_img;
+
+    /**
+     * @var
+     */
+    public $bottom_right_img;
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -58,6 +85,33 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type'
+            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'bottom_left_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'bottom_left_img',
+            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'top_right_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'top_right_img',
+            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'bottom_right_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'bottom_right_img',
             ],
             'cacheInvalidate'=>[
                 'class' => CacheInvalidateBehavior::className(),
@@ -96,6 +150,11 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
             'id' => Yii::t('common', 'ID'),
             'carousel_id' => Yii::t('common', 'Carousel ID'),
             'image' => Yii::t('common', 'Image'),
+            'top_left_img' => Yii::t('common', 'Top Left Image'),
+            'top_right_img' => Yii::t('common', 'Top Right Image'),
+            'bottom_left_img' => Yii::t('common', 'Bottom Left Image'),
+            'bottom_right_img' => Yii::t('common', 'Bottom Right Image'),
+            'additionalImages1' => Yii::t('common', 'additionalImages1'),
             'base_url' => Yii::t('common', 'Base URL'),
             'path' => Yii::t('common', 'Path'),
             'type' => Yii::t('common', 'File Type'),
@@ -120,5 +179,13 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
     public function getImageUrl()
     {
         return rtrim($this->base_url, '/') . '/' . ltrim($this->path, '/');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWidgetCarouselItemImages()
+    {
+        return $this->hasMany(WidgetCarouselItemImages::className(), ['item_id' => 'id']);
     }
 }

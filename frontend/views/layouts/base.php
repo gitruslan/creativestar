@@ -50,7 +50,7 @@ use common\widgets\DbMenu;
                     </ul>
             </div>
             <div class="footer-owners">
-                <div class="copy">&copy; Creativestar <?php echo date('Y') ?></div>
+                <div class="copy">&copy; Creativistar <?php echo date('Y') ?></div>
                 <div class="reserved">ALL rights reserved</div>
             </div>
         </div>

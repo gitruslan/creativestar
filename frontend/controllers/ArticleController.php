@@ -48,13 +48,13 @@ class ArticleController extends Controller
     public function actionView($slug)
     {
         $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
-
         if (!$model) {
             throw new NotFoundHttpException;
         }
+        $articles = Article::find()->published()->andWhere(['category_id'=>$model->category->id])->all();
 
         $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model'=>$model]);
+        return $this->render($viewFile, ['model'=>$model,'articles'=>$articles]);
     }
 
     public function actionAttachmentDownload($id)

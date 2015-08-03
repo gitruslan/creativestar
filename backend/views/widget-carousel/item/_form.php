@@ -11,7 +11,7 @@ use yii\helpers\Html;
 <div class="widget-carousel-item-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
+    <div id="item-images">
     <?php echo $form->errorSummary($model) ?>
 
     <?php echo $form->field($model, 'image')->widget(
@@ -21,6 +21,32 @@ use yii\helpers\Html;
         ]
     ) ?>
 
+
+    <?php echo $form->field($model, 'top_left_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'bottom_left_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'top_right_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    <?php echo $form->field($model, 'bottom_right_img')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url'=>['/file-storage/upload'],
+        ]
+    ) ?>
+    </div>
     <?php echo $form->field($model, 'order')->textInput() ?>
 
     <?php echo $form->field($model, 'url')->textInput(['maxlength' => 1024]) ?>
