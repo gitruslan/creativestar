@@ -152,8 +152,8 @@ class CarouselItemImagesBehavior extends Behavior {
     {
         //
         $files = $_POST['WidgetCarouselItem'][$this->attribute];//$this->owner->{$this->attribute};
-        //print_r($this->attribute);
-        return $files ? [$files]: [];
+        print_r($this->attribute);
+        return $files ? $files: [];
     }
 
 
@@ -163,29 +163,50 @@ class CarouselItemImagesBehavior extends Behavior {
     public function afterUpdateAdditional()
     {
 
-        $filesPaths = ArrayHelper::getColumn($this->getUploaded(), 'path');
+        $newPath = $this->getUploaded();
+        $oldPath = $this->owner->getRelation($this->uploadRelation)->andWhere(['name'=>$this->attribute])->one();
+        //empty img
+        if (!count($newPath) && !count($oldPath)) {
+            return;
+        }
+
+        echo ("---<br>".var_dump($newPath));
+
+        //change image or insert new
+        if (!empty($newPath) && (isset($oldPath) || !isset($oldPath))) {
+
+            $this->saveFilesToRelation($newPath);
+
+            exit();
+        } else {
+            exit("delete all");
+            //delete image
+            $this->getStorage()->delete($oldPath->path);
+            $oldPath->delete();
+        }
+
+
+
+//        $models = $this->owner->getRelation($this->uploadRelation)->andWhere(['name'=>$this->attribute])->one();
+//        exit(print_r($models->path));
+//        $modelsPaths = ArrayHelper::getColumn($models, $this->getAttributeField('path'));
 //        echo "<pre>";
-//         print_r($filesPaths);
+//        print_r($modelsPaths);
 //        echo ("</pre>");
-
-        $models = $this->owner->getRelation($this->uploadRelation)->all();
-        $modelsPaths = ArrayHelper::getColumn($models, $this->getAttributeField('path'));
-        $newFiles = [];
-        foreach ($models as $model) {
-            $path = $model->getAttribute($this->getAttributeField('path'));
-            if (!in_array($path, $filesPaths, true) && $model->delete()) {
-                $this->getStorage()->delete($path);
-            }
-        }
-
-        foreach ($this->getUploaded() as $file) {
-            if (!in_array($file['path'], $modelsPaths, true)) {
-                $newFiles[] = $file;
-            }
-        }
-
-
-        $this->saveFilesToRelation($newFiles);
+//        exit();
+//        $newFiles = [];
+//        foreach ($models as $model) {
+//            $path = $model->getAttribute($this->getAttributeField('path'));
+//            if (!in_array($path, $filesPaths, true) && $model->delete()) {
+//                $this->getStorage()->delete($path);
+//            }
+//        }
+//
+//        foreach ($this->getUploaded() as $file) {
+//            if (!in_array($file['path'], $modelsPaths, true)) {
+//                $newFiles[] = $file;
+//            }
+//        }
     }
 
     /**
@@ -232,18 +253,17 @@ class CarouselItemImagesBehavior extends Behavior {
     /**
      * @param array $files
      */
-    protected function saveFilesToRelation($files)
+    protected function saveFilesToRelation($file)
     {
         $modelClass = $this->getUploadModelClass();
-        foreach ($files as $file) {
-            $model = new $modelClass;
-            $model->setScenario($this->uploadModelScenario);
-            $model = $this->loadModel($model, $file);
-            if ($this->getUploadRelation()->via !== null) {
-                $model->save(false);
-            }
-            $this->owner->link($this->uploadRelation, $model);
+        $model = new $modelClass;
+        $model->setScenario($this->uploadModelScenario);
+        $model = $this->loadModel($model, $file);
+        if ($this->getUploadRelation()->via !== null) {
+            $model->save(false);
         }
+        $this->owner->link($this->uploadRelation, $model);
+
     }
 
     /**
@@ -284,6 +304,8 @@ class CarouselItemImagesBehavior extends Behavior {
      */
     protected function loadModel(&$model, $data)
     {
+        var_dump($model->attributes);
+        var_dump($data);
 
         $attributes = array_flip($model->attributes());
         foreach ($this->fields() as $dataField => $modelField) {

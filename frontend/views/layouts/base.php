@@ -42,9 +42,9 @@ use common\widgets\DbMenu;
             <div class="footer-star"></div>
             <div class="footer-menu">
                 <div class="footer-menu-line"></div>
-                    <ul><li><a href="/" class="footer-menu-active">Home</a></li>
+                    <ul><li><a href="/" class="">Home</a></li>
                         <li><a href="/games">Games</a></li>
-                        <li><a href="/about">About us</a></li>
+                        <li><a href="/about-us">About us</a></li>
                         <li><a href="/blog">Blog</a></li>
                         <li><a href="/site/contact">Contact</a></li>
                     </ul>

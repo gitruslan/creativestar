@@ -162,8 +162,8 @@ a.desc:after {
     display: block;
 
 }
-.navbar-center-menu ul li a:hover, .active-menu-item{
-    color:#f1b116;
+.navbar-center-menu ul li a:hover, li.active-menu-item a{
+    color:#f1b116 !important;
     background:url("/img/active_main_menu.png") center center;
 }
 .container{
