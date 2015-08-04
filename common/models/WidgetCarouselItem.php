@@ -88,12 +88,23 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
             ],
             [
                 'class' => CarouselItemImagesBehavior::className(),
+                'attribute' => 'top_left_img',
+                'uploadRelation' => 'widgetCarouselItemImages',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'nameAttribute' => 'top_left_img',
+                'ownerName' => 'WidgetCarouselItem'
+            ],
+            [
+                'class' => CarouselItemImagesBehavior::className(),
                 'attribute' => 'bottom_left_img',
                 'uploadRelation' => 'widgetCarouselItemImages',
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
                 'nameAttribute' => 'bottom_left_img',
+                'ownerName' => 'WidgetCarouselItem'
             ],
             [
                 'class' => CarouselItemImagesBehavior::className(),
@@ -103,6 +114,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
                 'nameAttribute' => 'top_right_img',
+                'ownerName' => 'WidgetCarouselItem'
             ],
             [
                 'class' => CarouselItemImagesBehavior::className(),
@@ -112,6 +124,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
                 'baseUrlAttribute' => 'base_url',
                 'typeAttribute' => 'type',
                 'nameAttribute' => 'bottom_right_img',
+                'ownerName' => 'WidgetCarouselItem'
             ],
             'cacheInvalidate'=>[
                 'class' => CacheInvalidateBehavior::className(),

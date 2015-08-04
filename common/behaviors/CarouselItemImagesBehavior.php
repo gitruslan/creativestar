@@ -20,6 +20,11 @@ class CarouselItemImagesBehavior extends Behavior {
     public $owner;
 
     /**
+     * @var
+     */
+    public $ownerName;
+
+    /**
      * @var string Model attribute that contain uploaded file information
      * or array of files information
      */
@@ -101,11 +106,12 @@ class CarouselItemImagesBehavior extends Behavior {
     public function events()
     {
         return [
+        return [
             ActiveRecord::EVENT_AFTER_FIND => 'afterFindAdditional',
-            ActiveRecord::EVENT_AFTER_INSERT => 'afterInsertAdditional',
+//            ActiveRecord::EVENT_AFTER_INSERT => 'afterInsertAdditional',
             ActiveRecord::EVENT_AFTER_UPDATE => 'afterUpdateAdditional',
-            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDeleteAdditional',
-            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete'
+//            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDeleteAdditional',
+//            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete'
         ];
     }
 
@@ -120,7 +126,6 @@ class CarouselItemImagesBehavior extends Behavior {
             'base_url' => $this->baseUrlAttribute,
             'type' => $this->typeAttribute,
             'size' => $this->sizeAttribute,
-            'name' => $this->nameAttribute,
             'order' => $this->orderAttribute
         ];
 
@@ -150,10 +155,10 @@ class CarouselItemImagesBehavior extends Behavior {
      */
     protected function getUploaded()
     {
-        //
-        $files = $_POST['WidgetCarouselItem'][$this->attribute];//$this->owner->{$this->attribute};
-        print_r($this->attribute);
-        return $files ? $files: [];
+        if(!$this->ownerName)
+            throw new InvalidParamException(get_class($this) . ' has empty ownerName var ');
+        $file = Yii::$app->request->post($this->ownerName)[$this->attribute];
+        return $file ? $file: [];
     }
 
 
@@ -162,51 +167,26 @@ class CarouselItemImagesBehavior extends Behavior {
      */
     public function afterUpdateAdditional()
     {
-
         $newPath = $this->getUploaded();
         $oldPath = $this->owner->getRelation($this->uploadRelation)->andWhere(['name'=>$this->attribute])->one();
         //empty img
         if (!count($newPath) && !count($oldPath)) {
             return;
         }
-
-        echo ("---<br>".var_dump($newPath));
-
         //change image or insert new
         if (!empty($newPath) && (isset($oldPath) || !isset($oldPath))) {
-
+            // clear if we try
+            if (isset($oldPath->path)) {
+                $this->getStorage()->delete($oldPath->path);
+                $oldPath->delete();
+            }
             $this->saveFilesToRelation($newPath);
-
-            exit();
-        } else {
-            exit("delete all");
-            //delete image
-            $this->getStorage()->delete($oldPath->path);
-            $oldPath->delete();
+        }
+        // clear temporary saved img file storage table
+        if (isset($newPath['path'])) {
+          //  $this->getStorage()->delete($newPath['path']);
         }
 
-
-
-//        $models = $this->owner->getRelation($this->uploadRelation)->andWhere(['name'=>$this->attribute])->one();
-//        exit(print_r($models->path));
-//        $modelsPaths = ArrayHelper::getColumn($models, $this->getAttributeField('path'));
-//        echo "<pre>";
-//        print_r($modelsPaths);
-//        echo ("</pre>");
-//        exit();
-//        $newFiles = [];
-//        foreach ($models as $model) {
-//            $path = $model->getAttribute($this->getAttributeField('path'));
-//            if (!in_array($path, $filesPaths, true) && $model->delete()) {
-//                $this->getStorage()->delete($path);
-//            }
-//        }
-//
-//        foreach ($this->getUploaded() as $file) {
-//            if (!in_array($file['path'], $modelsPaths, true)) {
-//                $newFiles[] = $file;
-//            }
-//        }
     }
 
     /**
@@ -234,19 +214,25 @@ class CarouselItemImagesBehavior extends Behavior {
         $models = $this->owner->{$this->uploadRelation};
         $fields = $this->fields();
         $data = [];
-        foreach ($models as $k => $model) {
-            /* @var $model \yii\db\BaseActiveRecord */
-            $file = [];
-            foreach ($fields as $dataField => $modelAttribute) {
-                $file[$dataField] = $model->hasAttribute($modelAttribute)
-                    ? ArrayHelper::getValue($model, $modelAttribute)
-                    : null;
-            }
-            if ($file['path']) {
-                $data[$k] = $this->enrichFileData($file);
-            }
-
+//        foreach ($models as $k => $model) {
+//            /* @var $model \yii\db\BaseActiveRecord */
+//            $file = [];
+//            foreach ($fields as $dataField => $modelAttribute) {
+//                $file[$dataField] = $model->hasAttribute($modelAttribute)
+//                    ? ArrayHelper::getValue($model, $modelAttribute)
+//                    : null;
+//            }
+//            if ($file['path']) {
+//                $data[$k] = $this->enrichFileData($file);
+//            }
+//
+//        }
+        if(count($models) && $models[0]->name == $this->attribute){
+            $data['name'] = $models[0]->name;
+            $data['path'] = $models[0]->path;
+            $data['base_url'] = $models[0]->base_url;
         }
+
         $this->owner->{$this->attribute} = $data;
     }
 
@@ -259,10 +245,13 @@ class CarouselItemImagesBehavior extends Behavior {
         $model = new $modelClass;
         $model->setScenario($this->uploadModelScenario);
         $model = $this->loadModel($model, $file);
+
         if ($this->getUploadRelation()->via !== null) {
             $model->save(false);
         }
+      //  exit(var_dump($model));
         $this->owner->link($this->uploadRelation, $model);
+
 
     }
 
@@ -304,15 +293,15 @@ class CarouselItemImagesBehavior extends Behavior {
      */
     protected function loadModel(&$model, $data)
     {
-        var_dump($model->attributes);
-        var_dump($data);
-
+//        var_dump($model->attributes);
+//        var_dump($data);
         $attributes = array_flip($model->attributes());
         foreach ($this->fields() as $dataField => $modelField) {
             if ($modelField && array_key_exists($modelField, $attributes)) {
-                $model->{$modelField} =  ArrayHelper::getValue($data, $dataField);
+                $model->{$dataField} =  ArrayHelper::getValue($data, $dataField);
             }
         }
+        $model->name = $this->attribute;
         return $model;
     }
 

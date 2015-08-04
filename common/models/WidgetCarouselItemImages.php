@@ -48,9 +48,9 @@
         public function rules()
         {
             return [
-                //[['item_id', 'path'], 'required'],
+             //   [['item_id', 'path'], 'required'],
                 [['item_id'], 'integer'],
-                [['base_url','size','path', 'type', 'name'], 'string', 'max' => 255]
+                [['base_url','path', 'type', 'name'], 'string', 'max' => 255]
             ];
         }
 
@@ -64,7 +64,6 @@
                 'item_id' => Yii::t('common', 'Item ID'),
                 'base_url' => Yii::t('common', 'Base Url'),
                 'path' => Yii::t('common', 'Path'),
-                'size' => Yii::t('common', 'Size'),
                 'type' => Yii::t('common', 'Type'),
                 'name' => Yii::t('common', 'Name')
             ];
