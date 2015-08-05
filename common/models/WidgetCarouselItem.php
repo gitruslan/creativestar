@@ -22,7 +22,11 @@ use yii\behaviors\TimestampBehavior;
  * @property string $caption
  * @property integer $status
  * @property integer $order
- *
+ * @property integer $top_left_img
+ * @property integer $bottom_left_img
+ * @property integer $top_right_img
+ * @property integer $bottom_right_img
+
  * @property WidgetCarousel $carousel
  */
 class WidgetCarouselItem extends \yii\db\ActiveRecord
@@ -32,12 +36,6 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
      * @var array|null
      */
     public $image;
-
-    /**
-     * @var array
-     */
-    public $additionalImages;
-    public $additionalImages1;
 
     /**
      * @var
@@ -192,6 +190,15 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
     public function getImageUrl()
     {
         return rtrim($this->base_url, '/') . '/' . ltrim($this->path, '/');
+    }
+
+    /**
+     * @param $attr
+     * @return string
+     */
+
+    public function getAdditionalImage($attr){
+        return rtrim($this->{$attr}->base_url, '/') . '/' . ltrim($this->{$attr}->path, '/');
     }
 
     /**

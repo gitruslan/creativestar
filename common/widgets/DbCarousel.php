@@ -48,6 +48,7 @@ class DbCarousel extends Carousel
             $items = [];
             $query = WidgetCarouselItem::find()
                 ->joinWith('carousel')
+                ->joinWith('widgetCarouselItemImages')
                 ->where([
                     '{{%widget_carousel_item}}.status' => 1,
                     '{{%widget_carousel}}.status' => WidgetCarousel::STATUS_ACTIVE,
@@ -67,6 +68,25 @@ class DbCarousel extends Carousel
                 if ($item->caption) {
                     $items[$k]['caption'] = $item->caption;
                 }
+
+                $items[$k]['additional_images'] = [
+                    'top_left_img'     => $item->top_left_img,
+                    'bottom_left_img'  => $item->bottom_left_img,
+                    'top_right_img'    => $item->top_right_img,
+                    'bottom_right_img' => $item->bottom_right_img,
+                ];
+//                if ($item->top_left_img){
+//                    $items[$k]['top_left_img'] = $item->top_left_img;
+//                }
+//                if ($item->bottom_left_img){
+//                    $items[$k]['bottom_left_img'] = $item->bottom_left_img;
+//                }
+//                if ($item->top_right_img){
+//                    $items[$k]['top_right_img'] = $item->top_right_img;
+//                }
+//                if ($item->bottom_right_img){
+//                    $items[$k]['bottom_right_img'] = $item->bottom_right_img;
+//                }
             }
             Yii::$app->cache->set($cacheKey, $items, 60*60*24*365);
         }
@@ -82,10 +102,10 @@ class DbCarousel extends Carousel
         $this->registerPlugin('carousel');
         return implode("\n", [
             Html::beginTag('div', $this->options),
+            $this->renderAdditionalImages(),
             $this->renderIndicators(),
             $this->renderItems(),
             $this->renderControls(),
-            $this->renderCustomImages(),
             Html::endTag('div')
         ]) . "\n";
     }
@@ -93,8 +113,12 @@ class DbCarousel extends Carousel
     /**
      * Render custom images
      */
-    public function renderCustomImages()
+    public function renderAdditionalImages()
     {
-        return HTML::tag('div','',['class'=>'carousel-left-bottom-image']);
+        $additional_images = [];
+        foreach ($this->items as $item) {
+            $additional_images[] = $item['additional_images'];
+        }
+        return HTML::tag('div','',['class'=>'additional_images','data-addimages'=>json_encode($additional_images)]);
     }
 }

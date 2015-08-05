@@ -12,6 +12,7 @@ use Yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\base\InvalidParamException;
 
 class CarouselItemImagesBehavior extends Behavior {
     /**
@@ -20,7 +21,7 @@ class CarouselItemImagesBehavior extends Behavior {
     public $owner;
 
     /**
-     * @var
+     * @var behavior initializer
      */
     public $ownerName;
 
@@ -106,12 +107,11 @@ class CarouselItemImagesBehavior extends Behavior {
     public function events()
     {
         return [
-        return [
             ActiveRecord::EVENT_AFTER_FIND => 'afterFindAdditional',
-//            ActiveRecord::EVENT_AFTER_INSERT => 'afterInsertAdditional',
+            ActiveRecord::EVENT_AFTER_INSERT => 'afterInsertAdditional',
             ActiveRecord::EVENT_AFTER_UPDATE => 'afterUpdateAdditional',
-//            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDeleteAdditional',
-//            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete'
+            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDeleteAdditional',
+            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete'
         ];
     }
 
@@ -144,9 +144,7 @@ class CarouselItemImagesBehavior extends Behavior {
      */
     public function afterInsertAdditional()
     {
-        if ($this->owner->{$this->attribute}) {
-            $this->saveFilesToRelation($this->owner->{$this->attribute});
-        }
+        $this->afterUpdateAdditional();
     }
 
 
@@ -173,18 +171,27 @@ class CarouselItemImagesBehavior extends Behavior {
         if (!count($newPath) && !count($oldPath)) {
             return;
         }
-        //change image or insert new
-        if (!empty($newPath) && (isset($oldPath) || !isset($oldPath))) {
-            // clear if we try
-            if (isset($oldPath->path)) {
-                $this->getStorage()->delete($oldPath->path);
-                $oldPath->delete();
-            }
-            $this->saveFilesToRelation($newPath);
+
+        // delete image
+        if (!count($newPath) && count($oldPath)) {
+            // clear old image
+            $this->getStorage()->delete($oldPath->path);
+            $oldPath->delete();
+            return;
         }
-        // clear temporary saved img file storage table
-        if (isset($newPath['path'])) {
-          //  $this->getStorage()->delete($newPath['path']);
+
+        // add new image
+        if (count($newPath)  && !count($oldPath)) {
+            $this->saveFilesToRelation($newPath);
+            return;
+        }
+        // change existing image
+        if (count($newPath) && count($oldPath)
+            && $newPath['path'] != $oldPath->path) {
+            // clear old image
+            $this->getStorage()->delete($oldPath->path);
+            $oldPath->delete();
+            $this->saveFilesToRelation($newPath);
         }
 
     }
@@ -207,33 +214,24 @@ class CarouselItemImagesBehavior extends Behavior {
     }
 
     /**
-     *
+     * Try to init added images
      */
     public function afterFindAdditional()
     {
-        $models = $this->owner->{$this->uploadRelation};
-        $fields = $this->fields();
-        $data = [];
-//        foreach ($models as $k => $model) {
-//            /* @var $model \yii\db\BaseActiveRecord */
-//            $file = [];
-//            foreach ($fields as $dataField => $modelAttribute) {
-//                $file[$dataField] = $model->hasAttribute($modelAttribute)
-//                    ? ArrayHelper::getValue($model, $modelAttribute)
-//                    : null;
-//            }
-//            if ($file['path']) {
-//                $data[$k] = $this->enrichFileData($file);
-//            }
-//
-//        }
-        if(count($models) && $models[0]->name == $this->attribute){
-            $data['name'] = $models[0]->name;
-            $data['path'] = $models[0]->path;
-            $data['base_url'] = $models[0]->base_url;
+        // if we have smth
+        if($images = $this->owner->{$this->uploadRelation}){
+           // find image data
+            foreach($images as $image){
+                if ($image->name == $this->attribute) {
+                    $this->owner->{$this->attribute} = [
+                       'name' => $image->name,
+                       'path' => $image->path,
+                       'base_url' =>$image->base_url
+                    ];
+                    break;
+                }
+            }
         }
-
-        $this->owner->{$this->attribute} = $data;
     }
 
     /**
@@ -245,14 +243,10 @@ class CarouselItemImagesBehavior extends Behavior {
         $model = new $modelClass;
         $model->setScenario($this->uploadModelScenario);
         $model = $this->loadModel($model, $file);
-
         if ($this->getUploadRelation()->via !== null) {
             $model->save(false);
         }
-      //  exit(var_dump($model));
         $this->owner->link($this->uploadRelation, $model);
-
-
     }
 
     /**

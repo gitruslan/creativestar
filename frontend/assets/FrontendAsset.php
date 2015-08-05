@@ -20,6 +20,9 @@ class FrontendAsset extends AssetBundle
     public $css = [
         'css/style.css',
     ];
+    public $js = [
+        'js/carousel.js'
+    ];
 
     public $depends = [
         'yii\web\YiiAsset',
