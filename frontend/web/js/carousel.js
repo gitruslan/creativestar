@@ -5,19 +5,30 @@
 
 var carousel = {
     additionalImages:[],
+    countItems:0,
     beforeLoad :function(){
-        this._detectAdditionalImages()
+        this._detectAdditionalImages();
+        this._countItems();
     },
     catchChangeImage :function(){
         $('.carousel').on('slide.bs.carousel', function () {
-            console.log($('.carousel-indicators li.active',this).attr('data-slide-to'));
+            curItem = $('.carousel-indicators li.active',this).index();
+            if (curItem == carousel.countItems) {
+                curItem  = carousel.additionalImages[0][0];
+            } else {
+                curItem  = carousel.additionalImages[0][++curItem];
+            }
+            
         })
     },
     _detectAdditionalImages:function(){
         carousel.additionalImages.push($('.carousel .additional_images').data('addimages'));
-        if (!carousel.additionalImages.length) {
-           return false;
-        } return true;
+    },
+    _countItems:function(){
+        carousel.countItems = $('.carousel .carousel-indicators li').length - 1;
+    },
+    _changeImage:function(){
+
     },
     init:function(){
         this.beforeLoad();
