@@ -200,7 +200,7 @@ a.desc:after {
     width:115px;
     height:89px;
     position: absolute;
-    background: url("/img/carousel_blick.png");
+    /*background: url("/img/carousel_blick.png");*/
     left: 12px;
     top: 67px;
     z-index: 2;
@@ -209,7 +209,7 @@ a.desc:after {
     width:156px;
     height:183px;
     position: absolute;
-    background: url("/img/slider_left_top.png");
+    /*background: url("/img/slider_left_top.png");*/
     top: -50px;
     left: -40px;
 }
@@ -217,16 +217,16 @@ a.desc:after {
     width:428px;
     height:431px;
     position: absolute;
-    background: url("/img/slider_left_bottom.png");
-    top: 118px;
-    left: -171px;
-    z-index: 1;
+    /*background: url("/img/slider_left_bottom.png");*/
+    top: 184px;
+    left: -113px;
+    z-index: 3;
 }
 .carousel-right-top-image{
     width:215px;
     height:261px;
     position: absolute;
-    background: url("/img/slider_top_right.png");
+    /*background: url("/img/slider_top_right.png");*/
     top: -95px;
     left: 720px;
     z-index: 1;
@@ -235,7 +235,7 @@ a.desc:after {
     width:183px;
     height:261px;
     position: absolute;
-    background: url("/img/slider_bottom_right.png");
+    /*background: url("/img/slider_bottom_right.png");*/
     z-index: 3;
     top: 289px;
     left: 688px;
