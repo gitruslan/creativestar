@@ -7,9 +7,11 @@ var carousel = {
     additionalImages:[],
     countItems:0,
     beforeLoad :function(){
-        this._detectAdditionalImages();
-        this._countItems();
-        this._initDefaultImages();
+        if($('.carousel').length){
+            this._detectAdditionalImages();
+            this._countItems();
+            this._initDefaultImages();
+        }
     },
     catchChangeImage :function(){
         $('.carousel').on('slide.bs.carousel', function () {
