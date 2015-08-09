@@ -64,6 +64,15 @@ use yii\bootstrap\ActiveForm;
             'maxNumberOfFiles' => 10
         ]);
     ?>
+    <?php echo $form->field($model, 'slider')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'sortable' => true,
+            'maxFileSize' => 10000000, // 10 MiB
+            'maxNumberOfFiles' => 10
+        ]);
+    ?>
 
     <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 

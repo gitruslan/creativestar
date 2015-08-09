@@ -1,4 +1,7 @@
 <?php
+    use \frontend\widgets\DropDownArticleList;
+    use common\widgets\DbArticleSlider;
+
     /* @var $this yii\web\View */
     /* @var $model common\models\Article */
     /* @var $articles common\models\Article */
@@ -15,6 +18,11 @@
     $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="content">
+   <?= DropDownArticleList::widget([
+       'category' => $model->category->slug,
+       'name'=>'Choose game',
+   ]); ?>
+    <div class="clear"></div>
     <div class="article-item-game">
         <div class="article-item-title-game">
             <div class="game-title"><?php echo $model->title ?></div>
@@ -31,25 +39,58 @@
                     ['class' => 'img-rounded']
                 ) ?>
             <?php endif; ?>
+            <div class="games-underline"></div>
         </div>
-        <div class="games-underline"></div>
         <div class="article-item-body-game">
             <?php echo $model->body ?>
         </div>
-
-        <?php if (!empty($model->articleAttachments)): ?>
-            <h3><?php echo Yii::t('frontend', 'Attachments') ?></h3>
-            <ul id="article-attachments">
-                <?php foreach ($model->articleAttachments as $attachment): ?>
-                    <li>
+        <?php if(!empty($model->articleSlider)):?>
+            <?php echo DbArticleSlider::widget(
+                [
+                    'article_id'=>$model->id,
+                    'key'=>$model->id,
+                ]
+            )?>
+        <?php endif;?>
+        <div class="games-underline-after-body"></div>
+        <?php if (!empty($model->articleAttachments)): $c = 0; $style = 'blue'?>
+          <div class="article-attachments">
+            <div class="press-kit"><?php echo Yii::t('frontend', 'PRESS KIT') ?></div>
+            <?php
+                foreach ($model->articleAttachments as $attachment):
+                    if($c % 2){
+                        $style = 'sky';
+                    } else $style = 'blue';
+                ?>
+                <div class="article-attachments-item <?php echo $style;?>">
+                    <?php if(stristr($attachment->type,'image')):?>
+                        <div class="item-img">
+                            <?php echo \yii\helpers\Html::img(
+                                Yii::$app->glide->createSignedUrl([
+                                    'glide/index',
+                                    'path' =>  $attachment->path,
+                                    'w' => 75,
+                                    'h' => 69
+                                ], true),
+                                ['class' => 'img-rounded']
+                            ) ?>
+                        </div>
+                    <?php endif;?>
+                    <div class="item-download">
                         <?php echo \yii\helpers\Html::a(
-                            $attachment->name,
+                            'download',
                             ['attachment-download', 'id' => $attachment->id])
                         ?>
-                        (<?php echo Yii::$app->formatter->asSize($attachment->size) ?>)
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+                    </div>
+
+                    <div class="item-description">
+                        <?php echo '<b>'.Yii::t('frontend', 'Screenshots').'</b> / '.
+                            Yii::t('frontend', 'Size').':'.Yii::$app->formatter->asShortSize($attachment->size,2) ?>
+                    </div>
+
+                </div>
+            <?php $c++; endforeach; ?>
+          </div>
         <?php endif; ?>
 
     </div>

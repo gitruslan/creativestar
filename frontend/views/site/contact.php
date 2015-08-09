@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php echo $form->field($model, 'email') ?>
                 <?php echo $form->field($model, 'subject') ?>
                 <?php echo $form->field($model, 'body')->textArea(['rows' => 7]) ?>
-                <?php echo Html::submitButton(Yii::t('frontend', 'Submit'), ['class' => 'contact-button', 'name' => 'contact-button']) ?>
+                <?php echo Html::submitButton(Yii::t('frontend', ''), ['class' => 'contact-button', 'name' => 'contact-button']) ?>
             <?php ActiveForm::end(); ?>
         </div>
     </div>

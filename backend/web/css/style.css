@@ -16,3 +16,10 @@ body .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a > .i
 body .user-panel > .info {
   padding-left: 10px;
 }
+.widget-carousel-item-form .admin-additional-images .form-group{
+    float:left;
+    margin:30px 70px 0 0;
+}
+.clear{
+    clear:both;
+}

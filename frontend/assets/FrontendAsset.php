@@ -21,7 +21,8 @@ class FrontendAsset extends AssetBundle
         'css/style.css',
     ];
     public $js = [
-        'js/carousel.js'
+        'js/carousel.js',
+        'js/drop-down.js'
     ];
 
     public $depends = [

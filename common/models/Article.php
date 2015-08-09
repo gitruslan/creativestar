@@ -3,7 +3,9 @@
 namespace common\models;
 
 use common\models\query\ArticleQuery;
+use common\models\ArticleSlider;
 use trntv\filekit\behaviors\UploadBehavior;
+use common\behaviors\SliderUploadBehavior;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
@@ -32,6 +34,7 @@ use yii\behaviors\TimestampBehavior;
  * @property User $updater
  * @property ArticleCategory $category
  * @property ArticleAttachment[] $articleAttachments
+ * @property ArticleSlider[] $articleSlider
  */
 class Article extends \yii\db\ActiveRecord
 {
@@ -42,6 +45,11 @@ class Article extends \yii\db\ActiveRecord
      * @var array
      */
     public $attachments;
+
+    /**
+     * @var array
+     */
+    public $slider;
 
     /**
      * @var array
@@ -94,6 +102,17 @@ class Article extends \yii\db\ActiveRecord
                 'nameAttribute' => 'name',
             ],
             [
+                'class' => SliderUploadBehavior::className(),
+                'attribute' => 'slider',
+                'multiple' => true,
+                'uploadRelation' => 'articleSlider',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'sizeAttribute' => 'size',
+                'nameAttribute' => 'name',
+            ],
+            [
                 'class' => UploadBehavior::className(),
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
@@ -120,7 +139,7 @@ class Article extends \yii\db\ActiveRecord
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
             [['view'], 'string', 'max' => 255],
-            [['attachments', 'thumbnail'], 'safe']
+            [['attachments', 'thumbnail','slider'], 'safe']
         ];
     }
 
@@ -179,4 +198,12 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ArticleAttachment::className(), ['article_id' => 'id']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticleSlider()
+    {
+        return $this->hasMany(ArticleSlider::className(), ['article_id' => 'id']);
+    }
+
 }

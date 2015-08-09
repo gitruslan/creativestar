@@ -19,7 +19,7 @@ class DbText extends Widget
     public $key;
 
     /**
-     * @return string
+     * @return stringDropDownList.php
      */
     public function run()
     {

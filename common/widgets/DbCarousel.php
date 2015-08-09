@@ -75,18 +75,6 @@ class DbCarousel extends Carousel
                     'top_right_img'    => $item->top_right_img,
                     'bottom_right_img' => $item->bottom_right_img,
                 ];
-//                if ($item->top_left_img){
-//                    $items[$k]['top_left_img'] = $item->top_left_img;
-//                }
-//                if ($item->bottom_left_img){
-//                    $items[$k]['bottom_left_img'] = $item->bottom_left_img;
-//                }
-//                if ($item->top_right_img){
-//                    $items[$k]['top_right_img'] = $item->top_right_img;
-//                }
-//                if ($item->bottom_right_img){
-//                    $items[$k]['bottom_right_img'] = $item->bottom_right_img;
-//                }
             }
             Yii::$app->cache->set($cacheKey, $items, 60*60*24*365);
         }
@@ -101,8 +89,10 @@ class DbCarousel extends Carousel
     {
         $this->registerPlugin('carousel');
         return implode("\n", [
+            $this->renderOutsideImages(),
             Html::beginTag('div', $this->options),
-            $this->renderAdditionalImages(),
+            $this->renderAdditionalImagesJson(),
+            $this->renderInsideImages(),
             $this->renderIndicators(),
             $this->renderItems(),
             $this->renderControls(),
@@ -113,12 +103,34 @@ class DbCarousel extends Carousel
     /**
      * Render custom images
      */
-    public function renderAdditionalImages()
+    public function renderAdditionalImagesJson()
     {
         $additional_images = [];
         foreach ($this->items as $item) {
             $additional_images[] = $item['additional_images'];
         }
         return HTML::tag('div','',['class'=>'additional_images','data-addimages'=>json_encode($additional_images)]);
+    }
+
+    /**
+     * Render custom outside carousel images
+     * @return string
+     */
+    public function renderOutsideImages(){
+        return implode("\n",[
+            HTML::tag('div','',['class'=>'carousel-left-top-image']),
+            HTML::tag('div','',['class'=>'carousel-right-top-image']),
+            HTML::tag('div','',['class'=>'carousel-right-bottom-image']),
+            HTML::tag('div','',['class'=>'carousel-left-blick']),
+        ]);
+    }
+    /**
+     * Render custom outside carousel images
+     * @return string
+     */
+    public function renderInsideImages(){
+        return implode("\n",[
+            HTML::tag('div','',['class'=>'carousel-left-bottom-image']),
+        ]);
     }
 }

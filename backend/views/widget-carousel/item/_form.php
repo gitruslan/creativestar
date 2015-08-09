@@ -21,7 +21,7 @@ use yii\helpers\Html;
         ]
     ) ?>
 
-
+  <div class="admin-additional-images">
     <?php echo $form->field($model, 'top_left_img')->widget(
         \trntv\filekit\widget\Upload::className(),
         [
@@ -46,7 +46,8 @@ use yii\helpers\Html;
             'url'=>['/file-storage/upload'],
         ]
     ) ?>
-    </div>
+   </div>
+        <div class="clear"></div>
     <?php echo $form->field($model, 'order')->textInput() ?>
 
     <?php echo $form->field($model, 'url')->textInput(['maxlength' => 1024]) ?>
