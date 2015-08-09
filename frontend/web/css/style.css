@@ -750,8 +750,36 @@ a.desc:after {
     background: url("/img/article_slider_r_arrow.png");
     font-size: 0px;
 }
-.article-slider .carousel-indicators {
-    bottom: -34px;
+
+.article-slider .carousel-inners{
+    padding-top:30px;
+    padding-left:0px;
+
 }
+
+.article-slider .carousel-inners .item{
+    float:left;
+    margin-left: 19px;
+}
+.article-slider .carousel-indicators {
+    bottom: -25px;
+}
+.article-slider .carousel-indicators li{
+     width: 22px;
+     height: 21px;
+     background: url("/img/article_circules_sprite.png");
+     background-position: 0% 0%;
+     border:none;
+     margin:0;
+}
+.article-slider .carousel-indicators li.active{
+    width: 22px;
+    height: 21px;
+    background: url("/img/article_circules_sprite.png");
+    background-position: 100% 0%;
+    border:none;
+    margin:0;
+}
+
 /*end slider article*/
 /*# sourceMappingURL=style.map */

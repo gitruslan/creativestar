@@ -63,7 +63,15 @@
                 foreach ($query->all() as $k => $item) {
                     /** @var $item \common\models\WidgetCarouselItem */
                     if ($item->path) {
-                        $items[$k]['content'] = Html::img($item->getUrl());
+                        $items[$k]['content'] = Html::img(
+                            Yii::$app->glide->createSignedUrl([
+                                'glide/index',
+                                'path' =>  $item->path,
+                                'w' => 216,
+                                'h' => 134
+                            ], true),
+                            ['class' => 'img-rounded']
+                        );
                     }
 
                     if ($item->url) {
@@ -85,7 +93,7 @@
          */
         public function run()
         {
-            //$this->registerPlugin('article-slider');
+           // $this->registerPlugin('article-slider');
             return implode("\n", [
                 Html::beginTag('div', $this->options),
                 $this->renderIndicators(),
@@ -107,7 +115,7 @@
                 $items[] = $this->renderItem($this->items[$i], $i);
             }
 
-            return Html::tag('div', implode("\n", $items), ['class' => 'carousel-inner']);
+            return Html::tag('div', implode("\n", $items), ['class' => 'carousel-inners']);
         }
 
         /**
