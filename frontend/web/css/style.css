@@ -734,34 +734,49 @@ a.desc:after {
     position: relative;
     margin: auto;
 }
-.article-slider .carousel-control .glyphicon-chevron-left{
+.article-slider .slider-control-left{
     width: 35px;
     height: 56px;
-    margin-top: -40px;
-    margin-left: -90px;
+    margin-top: 70px;
+    margin-left: -40px;
     background: url("/img/article_slider_l_arrow.png");
     font-size: 0px;
+    cursor:pointer;
 }
-.article-slider .carousel-control .glyphicon-chevron-right{
+.article-slider .slider-control-right{
     width: 36px;
     height: 56px;
-    margin-top: -40px;
-    margin-right: -91px;
+    margin-top: 70px;
+    margin-right: -40px;
     background: url("/img/article_slider_r_arrow.png");
     font-size: 0px;
+    cursor:pointer;
 }
 
-.article-slider .carousel-inners{
+.article-slider .slider-carousel-inner{
     padding-top:30px;
     padding-left:0px;
-
+    position:relative;
+    width:718px;
+    height: 221px;
+    overflow: hidden;
 }
 
-.article-slider .carousel-inners .item{
+.article-slider .slider-carousel-inner #w1{
+    width:10000px;
+    left:0;
+    position: absolute;
+}
+.article-slider .slider-carousel-inner #w1 .gallery-item{
     float:left;
-    margin-left: 19px;
+    margin-left:20px;
 }
-.article-slider .carousel-indicators {
+
+/*.article-slider .carousel-inners .item{*/
+    /*float:left;*/
+    /*margin-left: 19px;*/
+/*}*/
+/*.article-slider .carousel-indicators {
     bottom: -25px;
 }
 .article-slider .carousel-indicators li{
@@ -779,7 +794,7 @@ a.desc:after {
     background-position: 100% 0%;
     border:none;
     margin:0;
-}
+}*/
 
 /*end slider article*/
 /*# sourceMappingURL=style.map */

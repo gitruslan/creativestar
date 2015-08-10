@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+2.1.1 add
+-------------
+- Add new gallery (composer require 2amigos/yii2-gallery-widget:~1.0)
+
 2.1.0 under development
 -----------------------
 - Enh #189: Added command bus

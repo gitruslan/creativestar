@@ -12,6 +12,7 @@
     use yii\bootstrap\Widget;
     use yii\helpers\Html;
     use yii\helpers\ArrayHelper;
+    use dosamigos\gallery\Gallery;
 
     /**
      * Class DbCarousel
@@ -38,8 +39,12 @@
          * @var array
          */
         public $controls = [
-            '<span class="glyphicon glyphicon-chevron-left"></span>',
-            '<span class="glyphicon glyphicon-chevron-right"></span>',
+            '<div class="left carousel-control slider-control-left">
+
+            </div>',
+            '<div class="right carousel-control slider-control-right">
+
+            </div>',
         ];
 
         /**
@@ -63,7 +68,7 @@
                 foreach ($query->all() as $k => $item) {
                     /** @var $item \common\models\WidgetCarouselItem */
                     if ($item->path) {
-                        $items[$k]['content'] = Html::img(
+                        /*Html::img(
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
                                 'path' =>  $item->path,
@@ -71,19 +76,20 @@
                                 'h' => 134
                             ], true),
                             ['class' => 'img-rounded']
-                        );
+                        );*/
+                        $items[$k]['src'] = Yii::$app->glide->createSignedUrl([
+                            'glide/index',
+                            'path' =>  $item->path,
+                            'w' => 216,
+                            'h' => 134
+                        ], true);
+                        $items[$k]['url'] = $item->getUrl();
+                        $items[$k]['options'] = ['title'=>''];
                     }
-
-                    if ($item->url) {
-                        $items[$k]['content'] = Html::a($items[$k]['content'], $item->url, ['target'=>'_blank']);
-                    }
-
                 }
                 Yii::$app->cache->set($cacheKey, $items, 60*60*24*365);
             }
             $this->items = $items;
-//            parent::init();
-//            Html::addCssClass($this->options, $this->class);
             Widget::init();
             Html::addCssClass($this->options, $this->class);
         }
@@ -93,11 +99,12 @@
          */
         public function run()
         {
-           // $this->registerPlugin('article-slider');
             return implode("\n", [
                 Html::beginTag('div', $this->options),
-                $this->renderIndicators(),
+              //  $this->renderIndicators(),
+                Html::beginTag('div',  ['class' => 'slider-carousel-inner']),
                 $this->renderItems(),
+                Html::endTag('div'),
                 $this->renderControls(),
                 Html::endTag('div')
             ]) . "\n";
@@ -110,45 +117,35 @@
          */
         public function renderItems()
         {
-            $items = [];
-            for ($i = 0, $count = count($this->items); $i < $count; $i++) {
-                $items[] = $this->renderItem($this->items[$i], $i);
-            }
+            return Gallery::widget(['items'=>$this->items]);
 
-            return Html::tag('div', implode("\n", $items), ['class' => 'carousel-inners']);
         }
+
+
 
         /**
-         * Renders a single carousel item
-         * @param string|array $item a single item from [[items]]
-         * @param integer $index the item index as the first item should be set to `active`
-         * @return string the rendering result
-         * @throws InvalidConfigException if the item is invalid
+         * Renders previous and next control buttons.
+         * @throws InvalidConfigException if [[controls]] is invalid.
          */
-        public function renderItem($item, $index)
+        public function renderControls()
         {
-            if (is_string($item)) {
-                $content = $item;
-                $caption = null;
-                $options = [];
-            } elseif (isset($item['content'])) {
-                $content = $item['content'];
-                $caption = ArrayHelper::getValue($item, 'caption');
-                if ($caption !== null) {
-                    $caption = Html::tag('div', $caption, ['class' => 'carousel-caption']);
-                }
-                $options = ArrayHelper::getValue($item, 'options', []);
+            if (isset($this->controls[0], $this->controls[1])) {
+                return $this->controls[0].$this->controls[1];
+//                return Html::a($this->controls[0], '' , [
+//                    'class' => 'left carousel-control slider-control-left',
+//                    'data-slide' => 'prev',
+//                ]) . "\n"
+//                . Html::a($this->controls[1], '', [
+//                    'class' => 'right carousel-control slider-control-right',
+//                    'data-slide' => 'next',
+//                ]);
+            } elseif ($this->controls === false) {
+                return '';
             } else {
-                throw new InvalidConfigException('The "content" option is required.');
+                throw new InvalidConfigException('The "controls" property must be either false or an array of two elements.');
             }
-
-            Html::addCssClass($options, 'item');
-            if ($index === 0) {
-                Html::addCssClass($options, 'active');
-            }
-
-            return Html::tag('div', $content . "\n" . $caption, $options);
         }
+
 
 
     }
