@@ -22,6 +22,11 @@ use common\widgets\DbMenu;
             <div class="navbar-shadow">
                 <div class="navbar-center-logo"></div>
                 <div class="navbar-menu-blick"></div>
+                <div class="navbar-menu-slogan">
+                        <?php echo common\widgets\DbText::widget([
+                            'key'=>'slogan'
+                        ]) ?>
+                </div>
                 <div class="navbar-center-menu">
                     <?=DBMenu::widget([
                         'key'=>'frontend-main-menu',

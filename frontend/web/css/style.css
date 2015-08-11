@@ -149,6 +149,16 @@ a.desc:after {
     margin: -56px 0 0 0px;
     z-index:999;
 }
+.navbar-menu-slogan {
+    width:300px;
+    height:120px;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    margin: -14px 0 0 16px;
+    color:#ee8e36 ;
+    z-index:999;
+}
 .navbar-center-menu ul li a{
     font-family: Arial;
     font-size: 16px;
@@ -725,7 +735,17 @@ a.desc:after {
     text-align: center;
     line-height: 45px;
 }
-
+.article-attachments-item .music-name{
+    width: 300px;
+    margin: 0 auto;
+    padding-top:5px;
+    text-align: center;
+}
+.article-attachments-item .music-player{
+    width: 300px;
+    margin: 8px auto;
+    text-align: center;
+}
 /*Slider article*/
 .article-slider {
     width:718px;
@@ -772,29 +792,6 @@ a.desc:after {
     margin-left:20px;
 }
 
-/*.article-slider .carousel-inners .item{*/
-    /*float:left;*/
-    /*margin-left: 19px;*/
-/*}*/
-/*.article-slider .carousel-indicators {
-    bottom: -25px;
-}
-.article-slider .carousel-indicators li{
-     width: 22px;
-     height: 21px;
-     background: url("/img/article_circules_sprite.png");
-     background-position: 0% 0%;
-     border:none;
-     margin:0;
-}
-.article-slider .carousel-indicators li.active{
-    width: 22px;
-    height: 21px;
-    background: url("/img/article_circules_sprite.png");
-    background-position: 100% 0%;
-    border:none;
-    margin:0;
-}*/
 
 /*end slider article*/
 /*# sourceMappingURL=style.map */

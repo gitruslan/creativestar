@@ -6,6 +6,7 @@ use common\models\query\ArticleQuery;
 use common\models\ArticleSlider;
 use trntv\filekit\behaviors\UploadBehavior;
 use common\behaviors\SliderUploadBehavior;
+use common\behaviors\MusicUploadBehavior;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
@@ -55,6 +56,13 @@ class Article extends \yii\db\ActiveRecord
      * @var array
      */
     public $thumbnail;
+
+    /**
+     * @var array
+     */
+    public $music;
+
+
 
     /**
      * @inheritdoc
@@ -113,6 +121,17 @@ class Article extends \yii\db\ActiveRecord
                 'nameAttribute' => 'name',
             ],
             [
+                'class' => MusicUploadBehavior::className(),
+                'attribute' => 'music',
+                'multiple' => true,
+                'uploadRelation' => 'articleMusic',
+                'pathAttribute' => 'path',
+                'baseUrlAttribute' => 'base_url',
+                'typeAttribute' => 'type',
+                'sizeAttribute' => 'size',
+                'nameAttribute' => 'name',
+            ],
+            [
                 'class' => UploadBehavior::className(),
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
@@ -139,7 +158,7 @@ class Article extends \yii\db\ActiveRecord
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
             [['view'], 'string', 'max' => 255],
-            [['attachments', 'thumbnail','slider'], 'safe']
+            [['attachments', 'thumbnail','slider','music'], 'safe']
         ];
     }
 
@@ -157,6 +176,7 @@ class Article extends \yii\db\ActiveRecord
             'description'=>Yii::t('common', 'Description'),
             'view' => Yii::t('common', 'Article View'),
             'thumbnail' => Yii::t('common', 'Thumbnail'),
+            'music' => Yii::t('common', 'Load music files'),
             'author_id' => Yii::t('common', 'Author'),
             'updater_id' => Yii::t('common', 'Updater'),
             'category_id' => Yii::t('common', 'Category'),
@@ -205,5 +225,13 @@ class Article extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ArticleSlider::className(), ['article_id' => 'id']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticleMusic()
+    {
+        return $this->hasMany(ArticleMusic::className(), ['article_id' => 'id']);
+    }
+
 
 }

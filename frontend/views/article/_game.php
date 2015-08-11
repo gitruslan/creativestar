@@ -53,7 +53,7 @@
             )?>
         <?php endif;?>
         <div class="games-underline-after-body"></div>
-        <?php if (!empty($model->articleAttachments)): $c = 0; $style = 'blue'?>
+        <?php $c = 0; if (!empty($model->articleAttachments)):?>
           <div class="article-attachments">
             <div class="press-kit"><?php echo Yii::t('frontend', 'PRESS KIT') ?></div>
             <?php
@@ -90,8 +90,27 @@
 
                 </div>
             <?php $c++; endforeach; ?>
-          </div>
+
         <?php endif; ?>
+        <?php if($model->articleMusic):?>
+            <?php
+            foreach ($model->articleMusic as $music):
+                if($c % 2){
+                    $style = 'sky';
+                } else $style = 'blue';
+                ?>
+          <div class="article-attachments-item <?php echo $style;?>">
+              <div class="music-name"><?=$music->name." ".Yii::t('frontend', 'soundtrack')?></div>
+              <div class="music-player">
+                  <audio controls class="music-player">
+                      <source src="<?=$music->getUrl();?>" type="<?=$music->type;?>">
+                      Your browser does not support the audio element.
+                  </audio>
+              </div>
+          </div>
+           <?php $c++; endforeach; ?>
+        <?php endif;?>
+       </div>
 
     </div>
 </div>
