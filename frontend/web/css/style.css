@@ -792,6 +792,11 @@ a.desc:after {
     margin-left:20px;
 }
 
+/*errors*/
+.alert-danger{
+    width: 700px;
+    margin: 10px auto;
+}
 
 /*end slider article*/
 /*# sourceMappingURL=style.map */
