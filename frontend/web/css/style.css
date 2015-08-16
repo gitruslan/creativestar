@@ -594,6 +594,8 @@ a.desc:after {
     margin: auto;
     margin-top: 60px;
     text-align: center;
+    position: relative;
+    z-index:2;
 }
 .fc-icon,.tw-icon,.yt-icon{
     width:100px;
@@ -794,6 +796,10 @@ a.desc:after {
 
 /*errors*/
 .alert-danger{
+    width: 700px;
+    margin: 10px auto;
+}
+.alert-success{
     width: 700px;
     margin: 10px auto;
 }

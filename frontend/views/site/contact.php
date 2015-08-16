@@ -23,8 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-<div class="social-buttons">
-   <div class="fc-icon"></div>
-   <div class="tw-icon"></div>
-   <div class="yt-icon"></div>
-</div>
+<?php echo common\widgets\DbText::widget([
+    'key'=>'social-buttons'
+]) ?>
