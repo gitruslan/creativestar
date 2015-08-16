@@ -798,5 +798,51 @@ a.desc:after {
     margin: 10px auto;
 }
 
+.error-page{
+    width:700px;
+    min-height:200px;
+    margin: 10px auto;
+}
+.error-page .error-page-stcode{
+    width:700px;
+    font-size: 320px;
+    font-weight: bold;
+    margin: -70px 0 0 69px;
+    color:#36d8ea;
+}
+.error-page .error-page-message{
+    width:500px;
+    margin: -55px 0px 0 236px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #208995;
+}
+.error-page .error-page-explanation {
+    color: #084349;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.error-page .error-code-blick-left{
+    width: 115px;
+    height: 89px;
+    position: absolute;
+    background: url("/img/error_page_blick.png");
+    background-repeat: no-repeat;
+    left: 226px;
+    top: 81px;
+    z-index: 3;
+}
+.error-page .error-code-blick-right{
+    width: 115px;
+    height: 89px;
+    position: absolute;
+    background: url("/img/error_page_blick.png");
+    background-repeat: no-repeat;
+    left: 546px;
+    top: 222px;
+    z-index: 3;
+}
 /*end slider article*/
 /*# sourceMappingURL=style.map */
