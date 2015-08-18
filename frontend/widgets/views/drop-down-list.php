@@ -17,8 +17,11 @@
             <div class="caret-item"></div>
         </div>
         <div class="center-item">
-           <?php foreach ($articles as $article) :?>
-            <div class="items" data-value="/<?=$category?>/<?=$article->slug?>"><?=$article->title?></div>
+           <?php
+                 foreach ($articles as $article) :
+                     $url = $category."/".$article->slug;
+           ?>
+            <div class="items" data-value="<?=Yii::$app->urlManager->createUrl($url)?>"><?=$article->title?></div>
            <?php endforeach;?>
         </div>
        <div class="bottom-item"></div>

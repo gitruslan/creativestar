@@ -57,7 +57,7 @@ class DbMenu extends Menu
         if (isset($item['url'])) {
             $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
             return strtr($template, [
-                '{url}' => Html::encode(Url::to($item['url'])),
+                '{url}' => Html::encode(Yii::$app->urlManager->createUrl($item['url'])),
                 '{label}' => isset($item['multiLangLabel']) ?
                         Yii::t($item['multiLangLabel']['category'],
                             $item['multiLangLabel']['message']
