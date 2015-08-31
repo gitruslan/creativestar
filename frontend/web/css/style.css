@@ -139,7 +139,17 @@ a.desc:after {
 }
 .navbar-center-menu ul li{
     float:left;
-    margin: 0 21px 0 21px;
+    margin-left: 38px;
+}
+.navbar-center-menu ul li:nth-child(1){
+    margin-left: 26px;
+}
+.navbar-center-menu ul li:nth-child(2){
+    margin-left:33px;
+}
+.navbar-center-menu ul li:nth-child(3){
+    margin-left:43px;
+
 }
 .navbar-menu-blick {
     width:139px;
