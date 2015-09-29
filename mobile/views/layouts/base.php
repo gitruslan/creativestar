@@ -14,7 +14,7 @@ use common\widgets\DbMenu;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-    $this->beginContent('@frontend/views/layouts/_clear.php')
+    $this->beginContent('@mobile/views/layouts/_clear.php')
 ?>
 
     <div class="wrap">

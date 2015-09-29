@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\controllers;
+namespace mobile\controllers;
 
 use common\models\Article;
 use common\models\ArticleAttachment;

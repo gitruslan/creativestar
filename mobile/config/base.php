@@ -1,11 +1,11 @@
 <?php
 return [
-    'id' => 'frontend',
+    'id' => 'mobile',
     'basePath'=>dirname(__DIR__),
     'components' => [
         'urlManager'=>require(__DIR__.'/_urlManager.php'),
         'request' => [
-            'class' => 'frontend\components\LangRequest'
+            'class' => 'mobile\components\LangRequest'
         ],
         'language'=>'ru-RU',
 //        'i18n' => [

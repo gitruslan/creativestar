@@ -1,16 +1,16 @@
 <?php
 $config = [
-    'homeUrl'=>Yii::getAlias('@frontendUrl'),
-    'controllerNamespace' => 'frontend\controllers',
+    'homeUrl'=>Yii::getAlias('@mobileUrl'),
+    'controllerNamespace' => 'mobile\controllers',
     'defaultRoute' => 'site/index',
     'modules' => [
         'user' => [
-            'class' => 'frontend\modules\user\Module'
+            'class' => '\modules\user\Module'
         ],
         'api' => [
-            'class' => 'frontend\modules\api\Module',
+            'class' => 'mobile\modules\api\Module',
             'modules' => [
-                'v1' => 'frontend\modules\api\v1\Module'
+                'v1' => 'mobile\modules\api\v1\Module'
             ]
         ]
     ],
@@ -47,7 +47,7 @@ if (YII_ENV_DEV) {
         'generators'=>[
             'crud'=>[
                 'class'=>'yii\gii\generators\crud\Generator',
-                'messageCategory'=>'frontend'
+                'messageCategory'=>'mobile'
             ]
         ]
     ];
@@ -59,7 +59,7 @@ if (YII_ENV_PROD) {
     $config['components']['maintenance'] = [
         'class' => 'common\components\maintenance\Maintenance',
         'enabled' => function ($app) {
-            return $app->keyStorage->get('frontend.maintenance') === 'enabled';
+            return $app->keyStorage->get('mobile.maintenance') === 'enabled';
         }
     ];
 }

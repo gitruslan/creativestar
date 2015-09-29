@@ -1,5 +1,5 @@
 <?php
-namespace frontend\components;
+namespace mobile\components;
 
 use Yii;
 use yii\web\Request;

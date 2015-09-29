@@ -72,4 +72,4 @@ var carousel = {
         this.catchChangeImage()
     }
 }
-$(document).ready(function(){carousel.init()});
+$(document).ready(function(){});

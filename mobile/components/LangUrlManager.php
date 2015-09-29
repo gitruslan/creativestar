@@ -1,5 +1,5 @@
 <?php
-namespace frontend\components;
+namespace mobile\components;
 
 use yii\web\UrlManager;
 use common\models\Lang;

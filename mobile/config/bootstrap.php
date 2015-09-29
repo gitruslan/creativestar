@@ -2,6 +2,6 @@
 /**
  * @author Labuta Ruslan
  */
- //Path aliases
+//Path aliases
 
 // Url Aliases

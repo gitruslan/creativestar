@@ -6,7 +6,7 @@
  * Time: 2:01 PM
  */
 
-namespace frontend\controllers;
+namespace mobile\controllers;
 
 use Yii;
 use common\models\Page;

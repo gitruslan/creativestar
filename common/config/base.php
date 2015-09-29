@@ -136,6 +136,12 @@ $config = [
             ],
             require(Yii::getAlias('@frontend/config/_urlManager.php'))
         ),
+        'urlManagerMobile' => \yii\helpers\ArrayHelper::merge(
+                [
+                    'hostInfo'=>Yii::getAlias('@mobileUrl')
+                ],
+                require(Yii::getAlias('@mobile/config/_urlManager.php'))
+            ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo'=>Yii::getAlias('@storageUrl')
