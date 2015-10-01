@@ -24,10 +24,21 @@ class MobDbCarousel extends DbCarousel
         return implode("\n", [
             Html::beginTag('div', $this->options),
             $this->renderIndicators(),
+            $this->renderInsideBlocks(),
             $this->renderItems(),
             $this->renderControls(),
             Html::endTag('div')
         ]) . "\n";
+    }
+
+    /**
+     * Render custom outside carousel images
+     * @return string
+     */
+    public function renderInsideBlocks(){
+        return implode("\n",[
+            HTML::tag('div','',['class'=>'carousel-inset-shadow']),
+        ]);
     }
 
 }

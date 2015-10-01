@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace frontend\assets;
+namespace mobile\assets;
 
 use yii\web\AssetBundle;
 
@@ -13,15 +13,15 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class FrontendAsset extends AssetBundle
+class MobileAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $basePath = '/';
+    public $baseUrl = '@mobileUrl';
     public $css = [
         'css/style.css',
     ];
     public $js = [
-        'js/carousel.js',
+        'js/main-menu.js',
         'js/drop-down.js',
         'js/article-slider.js'
     ];

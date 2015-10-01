@@ -16,7 +16,19 @@ use common\widgets\DbMenu;
 
     $this->beginContent('@mobile/views/layouts/_clear.php')
 ?>
-
+    <div class="main-menu">
+        <div class="main-menu-shadow"></div>
+        <div class="main-menu-close"></div>
+        <div class="left-menu">
+            <?=DBMenu::widget([
+                'key'=>'frontend-main-menu',
+                'activeCssClass'=>'active-menu-item',
+                'options'=>[
+                    'tag'=>'ul',
+                ]
+            ]);?>
+        </div>
+    </div>
     <div class="wrap">
         <div class="navbar-wrapper">
             <div class="navbar-shadow">
@@ -31,6 +43,7 @@ use common\widgets\DbMenu;
     </div>
     <footer class="footer">
         <div class="footer-container">
+            <div class="footer-star"></div>
             <div class="footer-menu">
                 <div class="footer-menu-line"></div>
                     <ul><li><a href="/" class="">Home</a></li>
@@ -41,8 +54,10 @@ use common\widgets\DbMenu;
                     </ul>
             </div>
             <div class="footer-owners">
-                <div class="copy">&copy; Creativistar <?php echo date('Y') ?></div>
-                <div class="reserved">ALL rights reserved</div>
+                <div class="owners-wrapper">
+                    <div class="copy">&copy; Creativistar <?php echo date('Y') ?></div>
+                    <div class="reserved">ALL rights reserved</div>
+                </div>
             </div>
         </div>
     </footer>

@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models\search;
+namespace mobile\models\search;
 
 use common\models\Article;
 use yii\base\Model;

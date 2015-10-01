@@ -5,7 +5,7 @@
  * Date: 8/7/15
  * Time: 10:51 PM
  */
-namespace frontend\widgets;
+namespace mobile\widgets;
 
 use Yii;
 use \yii\base\Widget;
