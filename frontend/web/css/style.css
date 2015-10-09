@@ -379,6 +379,14 @@ a.desc:after {
     position: absolute;
     z-index:2;
 }
+.footer-owners .terms-privacy{
+    width: 200px;
+    margin-left: -31px;
+}
+.footer-owners .terms-privacy a{
+    text-decoration: underline;
+    color:#333;
+}
 #article-index{
     width: 715px;
     margin: 0 auto;
