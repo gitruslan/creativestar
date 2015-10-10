@@ -10,6 +10,7 @@
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use common\widgets\DbMenu;
+use \common\models\Lang;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -48,15 +49,19 @@ use common\widgets\DbMenu;
             <div class="footer-menu">
                 <div class="footer-menu-line"></div>
                     <ul><li><a href="/" class="">Home</a></li>
-                        <li><a href="/games">Games</a></li>
-                        <li><a href="/about-us">About us</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/site/contact">Contact</a></li>
+                        <li><a href="/<?=Lang::getCurrent()->url?>/games">Games</a></li>
+                        <li><a href="/<?=Lang::getCurrent()->url?>/about-us">About us</a></li>
+                        <li><a href="/<?=Lang::getCurrent()->url?>/blog">Blog</a></li>
+                        <li><a href="/<?=Lang::getCurrent()->url?>/site/contact">Contact</a></li>
                     </ul>
             </div>
             <div class="footer-owners">
                 <div class="copy">&copy; Creativistar <?php echo date('Y') ?></div>
                 <div class="reserved">ALL rights reserved</div>
+                <div class="terms-privacy">
+                    <a href="/<?=Lang::getCurrent()->url?>/terms-of-use">Terms of use</a> and
+                    <a href="/<?=Lang::getCurrent()->url?>/privacy-policy">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>

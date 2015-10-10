@@ -8,6 +8,8 @@ return [
         // Pages
         //['pattern'=>'page/<slug>', 'route'=>'page/view'],
         ['pattern'=>'<slug:(about-us)>','route'=>'page/view'],
+        ['pattern'=>'<slug:(terms-of-use)>','route'=>'page/view'],
+        ['pattern'=>'<slug:(privacy-policy)>','route'=>'page/view'],
 
         // Articles
         ['pattern'=>'article/index', 'route'=>'article/index'],
