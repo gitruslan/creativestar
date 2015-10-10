@@ -25,6 +25,10 @@ $config = [
                 ]
             ]
         ],
+        'mobileDetection' =>[
+            'class' => 'rlabuta\mobiledetect\MobileDetect',
+            'autoRedirectToMobile' => Yii::getAlias('@mobileUrl'),
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error'
         ],
