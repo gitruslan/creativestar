@@ -15,6 +15,8 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'body')->widget(
         \yii\imperavi\Widget::className(),

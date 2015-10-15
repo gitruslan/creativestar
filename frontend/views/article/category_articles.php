@@ -1,6 +1,6 @@
 <?php
     /* @var $this yii\web\View */
-    $this->title = $category->title."::";
+    $this->title = $category->title;
     $this->registerMetaTag([
         'name'=>'description',
         'content'=>$category->description

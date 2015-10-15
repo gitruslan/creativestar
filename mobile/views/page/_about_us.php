@@ -8,6 +8,15 @@
  * @var $model \common\models\Page
  */
 $this->title = $model->title;
+$this->registerMetaTag([
+    'name'=>'description',
+    'content'=>$model->description
+]);
+$this->registerMetaTag([
+    'name'=>'keywords',
+    'content'=>$model->keywords
+]);
+$this->title = $model->title;
 ?>
 <div class="aboutus-right-img"></div>
 <div class="aboutus-left-img"></div>
