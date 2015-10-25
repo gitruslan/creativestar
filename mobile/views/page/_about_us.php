@@ -18,9 +18,6 @@ $this->registerMetaTag([
 ]);
 $this->title = $model->title;
 ?>
-<div class="aboutus-right-img"></div>
-<div class="aboutus-left-img"></div>
-<div class="aboutus-blick-img"></div>
 <div class="about-us-wrapper">
     <?php echo $model->body ?>
 </div>
