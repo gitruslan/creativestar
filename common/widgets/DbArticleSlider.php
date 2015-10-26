@@ -31,6 +31,11 @@
         public $article_id;
 
         /**
+         * @var bool
+         */
+        public $showIndicators = false;
+
+        /**
          * @var
          */
         public $class = 'article-slider';
@@ -101,7 +106,7 @@
         {
             return implode("\n", [
                 Html::beginTag('div', $this->options),
-              //  $this->renderIndicators(),
+                $this->renderIndicators(),
                 Html::beginTag('div',  ['class' => 'slider-carousel-inner']),
                 $this->renderItems(),
                 Html::endTag('div'),
@@ -145,6 +150,20 @@
                 throw new InvalidConfigException('The "controls" property must be either false or an array of two elements.');
             }
         }
+
+        /**
+         * Render indicators for carousel in article
+         * Depends $showIndicator variable (true | false)
+         * @return string
+         */
+
+        public function renderIndicators()
+        {
+            if($this->showIndicators)
+                return parent::renderIndicators();
+            else return '';
+        }
+
 
 
 

@@ -11,8 +11,6 @@ $this->title = $name;
 $exception = Yii::$app->errorHandler->exception;
 ?>
 <div class="error-page">
-    <div class="error-code-blick-left"></div>
-    <div class="error-code-blick-right"></div>
     <div class="error-page-stcode">
         <?php echo Html::encode($exception->statusCode) ?>
     </div>
@@ -24,8 +22,5 @@ $exception = Yii::$app->errorHandler->exception;
     <p class="error-page-explanation">
         The above error occurred while the Web server was processing your request.</br>
         Please contact us if you think this is a server error. Thank you.
-    </p>
-    <p>
-
     </p>
 </div>
