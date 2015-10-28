@@ -10,6 +10,7 @@
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use common\widgets\DbMenu;
+use common\models\Lang;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -57,6 +58,10 @@ use common\widgets\DbMenu;
                 <div class="owners-wrapper">
                     <div class="copy">&copy; Creativistar <?php echo date('Y') ?></div>
                     <div class="reserved">ALL rights reserved</div>
+                    <div class="terms-privacy">
+                        <a href="/<?=Lang::getCurrent()->url?>/terms-of-use">Terms of use</a> and
+                        <a href="/<?=Lang::getCurrent()->url?>/privacy-policy">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
         </div>
