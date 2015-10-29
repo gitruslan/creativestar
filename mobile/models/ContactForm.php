@@ -57,12 +57,21 @@ class ContactForm extends Model
             return Yii::$app->mailer->compose()
                 ->setTo($email)
                 ->setFrom(Yii::$app->params['robotEmail'])
-                ->setReplyTo([$this->email => $this->name])
+                // ->setReplyTo([$this->email => $this->name])// todo temporary disabled
                 ->setSubject($this->subject)
-                ->setTextBody($this->body)
+                ->setTextBody($this->_prepareTextBody())
                 ->send();
         } else {
             return false;
         }
+    }
+
+    /**
+     * Prepare text body
+     * @return string
+     */
+    protected function _prepareTextBody()
+    {
+        return "Massage from : ".$this->name."(".$this->email.")\n\nText:\n".$this->body;
     }
 }
