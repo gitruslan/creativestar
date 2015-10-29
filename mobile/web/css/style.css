@@ -591,7 +591,6 @@ a.desc:after {
 .dropdown-list .main-item{
     width:160px;
     height:18px;
-    background: url('/img/dd_top_bg.png');
     font-size: 14px;
     color:#b3e7ef;
     padding-top: 7px;
@@ -628,7 +627,6 @@ a.desc:after {
 .dropdown-list .bottom-item{
     width:160px;
     height:12px;
-    background: url('/img/dd_bottom_bg.png');
 }
 
 
