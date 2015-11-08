@@ -58,7 +58,12 @@ class DbCarousel extends Carousel
             foreach ($query->all() as $k => $item) {
                 /** @var $item \common\models\WidgetCarouselItem */
                 if ($item->path) {
-                    $items[$k]['content'] = Html::img($item->getImageUrl());
+                    $items[$k]['content'] = Html::img(Yii::$app->glide->createSignedUrl([
+                        'glide/index',
+                        'path' =>  $item->path,
+                        'w' => 663,
+                        'h' => 414
+                    ], true));
                 }
 
                 if ($item->url) {
