@@ -1,9 +1,8 @@
 <?php
 return [
-    'class'=>'yii\web\UrlManager',
+    'class'=>'rlabuta\langmanager\components\LangUrlManager',
     'enablePrettyUrl'=>true,
     'showScriptName'=>false,
-    'class'=>'frontend\components\LangUrlManager',
     'rules'=> [
         // Pages
         //['pattern'=>'page/<slug>', 'route'=>'page/view'],

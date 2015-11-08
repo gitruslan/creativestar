@@ -9,7 +9,7 @@
 namespace common\models\query;
 
 use common\models\ArticleCategory;
-use common\models\Lang;
+use rlabuta\langmanager\models\Lang;
 use yii\db\ActiveQuery;
 
 class ArticleCategoryQuery extends ActiveQuery

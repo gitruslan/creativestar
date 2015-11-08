@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\ArticleCategory;
-use common\models\Lang;
+use rlabuta\langmanager\models\Lang;
 use backend\models\search\ArticleCategorySearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;

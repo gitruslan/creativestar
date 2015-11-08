@@ -5,7 +5,7 @@ return [
     'components' => [
         'urlManager'=>require(__DIR__.'/_urlManager.php'),
         'request' => [
-            'class' => 'frontend\components\LangRequest'
+            'class' => 'rlabuta\langmanager\components\LangRequest'
         ],
         'language'=>'ru-RU',
 //        'i18n' => [

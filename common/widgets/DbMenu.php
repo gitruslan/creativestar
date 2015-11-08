@@ -6,7 +6,7 @@
 namespace common\widgets;
 
 use \common\models\WidgetMenu;
-use \common\models\Lang;
+use rlabuta\langmanager\models\Lang;
 use yii\base\InvalidConfigException;
 use Yii;
 use yii\widgets\Menu;
