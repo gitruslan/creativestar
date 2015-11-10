@@ -1,6 +1,6 @@
 <?php
 $config = [
-    'name'=>'CreativeStar',
+    'name'=>'CreativiStar',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage'=>'en-US',
@@ -158,6 +158,8 @@ $config = [
             'uk-UA'=>'Українська (Україна)',
             'es' => 'Español'
         ],
+        'description' => '',
+        'keywords'    => ''
     ],
 ];
 

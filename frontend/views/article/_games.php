@@ -6,14 +6,8 @@
     /* @var $model common\models\Article */
     /* @var $articles common\models\Article */
     $this->title = $model->title;
-    $this->registerMetaTag([
-        'name'=>'description',
-        'content'=>$model->description
-    ]);
-    $this->registerMetaTag([
-        'name'=>'keywords',
-        'content'=>$model->keywords
-    ]);
+    Yii::$app->params['description'] = $model->description;
+    Yii::$app->params['keywords'] = $model->keywords;
     $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', $model->category->title), 'url' => '/'.$model->category->slug];
     $this->params['breadcrumbs'][] = $this->title;
 ?>

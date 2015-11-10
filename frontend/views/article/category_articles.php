@@ -1,14 +1,8 @@
 <?php
     /* @var $this yii\web\View */
     $this->title = $category->title;
-    $this->registerMetaTag([
-        'name'=>'description',
-        'content'=>$category->description
-    ]);
-    $this->registerMetaTag([
-        'name'=>'keywords',
-        'content'=>$category->keywords
-    ]);
+    Yii::$app->params['description'] = $category->description;
+    Yii::$app->params['keywords'] = $category->keywords;
     $this->params['breadcrumbs'][] = $category->title;
 ?>
 <div id="article-index">
