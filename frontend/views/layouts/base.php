@@ -14,8 +14,17 @@ use \common\models\Lang;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+$this->registerMetaTag([
+    'name'=>'description',
+    'content'=>Yii::$app->params['description']
+]);
+$this->registerMetaTag([
+    'name'=>'keywords',
+    'content'=>Yii::$app->params['keywords']
+]);
 
-    $this->beginContent('@frontend/views/layouts/_clear.php')
+
+$this->beginContent('@frontend/views/layouts/_clear.php')
 ?>
 
     <div class="wrap">

@@ -7,15 +7,8 @@
  * @var $this \yii\web\View
  * @var $model \common\models\Page
  */
-$this->title = $model->title;
-$this->registerMetaTag([
-    'name'=>'description',
-    'content'=>$model->description
-]);
-$this->registerMetaTag([
-    'name'=>'keywords',
-    'content'=>$model->keywords
-]);
+Yii::$app->params['description'] = $model->description;
+Yii::$app->params['keywords'] = $model->keywords;
 $this->title = $model->title;
 ?>
 <div class="aboutus-right-img"></div>

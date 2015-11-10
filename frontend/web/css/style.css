@@ -269,7 +269,11 @@ a.desc:after {
 .carousel-inner{
     padding: 20px 0 0 18px;
 }
+.carousel .carousel-indicators {
+    top: 428px;
+}
 .carousel .carousel-indicators li {
+
     width: 28px;
     height: 38px;
     background: url("/img/sprite_slider.png");
