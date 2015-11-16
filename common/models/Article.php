@@ -3,10 +3,10 @@
 namespace common\models;
 
 use common\models\query\ArticleQuery;
-use common\models\ArticleSlider;
 use trntv\filekit\behaviors\UploadBehavior;
 use common\behaviors\SliderUploadBehavior;
 use common\behaviors\MusicUploadBehavior;
+use common\behaviors\AttributesUploadBehavior;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
@@ -62,7 +62,10 @@ class Article extends \yii\db\ActiveRecord
      */
     public $music;
 
-
+    /**
+     * @var
+     */
+    public $article_attributes;
 
     /**
      * @inheritdoc
@@ -136,7 +139,15 @@ class Article extends \yii\db\ActiveRecord
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
                 'baseUrlAttribute' => 'thumbnail_base_url'
-            ]
+            ],
+            [
+                'class' => AttributesUploadBehavior::className(),
+                'uploadRelation' => 'articleAttributes',
+                'attribute'      => 'article_attribute',
+                'nameAttribute'  => 'name',
+                'valueAttribute' => 'value',
+            ],
+
         ];
     }
 
@@ -183,7 +194,8 @@ class Article extends \yii\db\ActiveRecord
             'status' => Yii::t('common', 'Published'),
             'published_at' => Yii::t('common', 'Published At'),
             'created_at' => Yii::t('common', 'Created At'),
-            'updated_at' => Yii::t('common', 'Updated At')
+            'updated_at' => Yii::t('common', 'Updated At'),
+            'article_attributes' => Yii::t('common', 'Article Attributes')
         ];
     }
 
@@ -231,6 +243,15 @@ class Article extends \yii\db\ActiveRecord
     public function getArticleMusic()
     {
         return $this->hasMany(ArticleMusic::className(), ['article_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticleAttributes()
+    {
+        return $this->hasMany(ArticleAttributes::className(),['article_id' => 'id']);
+
     }
 
 

@@ -47,6 +47,11 @@ use yii\bootstrap\ActiveForm;
         ]
     ) ?>
 
+    <?php
+      echo $form->field($model,'article_attributes');
+      echo $form->field($model,'article_attributes');
+    ?>
+
     <?php echo $form->field($model, 'thumbnail')->widget(
         \trntv\filekit\widget\Upload::className(),
         [
