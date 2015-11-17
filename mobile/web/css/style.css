@@ -93,7 +93,7 @@ a.desc:after {
     background-color: black;
 }
 .main-menu .left-menu{
-    width: 79%;
+    width: 35%;
     height: 100%;
     z-index:1003;
     position: absolute;

@@ -65,7 +65,12 @@ class Article extends \yii\db\ActiveRecord
     /**
      * @var
      */
-    public $article_attributes;
+    public $article_attributes_android_link;
+
+    /**
+     * @var
+     */
+    public $article_attributes_apple_link;
 
     /**
      * @inheritdoc
@@ -143,9 +148,18 @@ class Article extends \yii\db\ActiveRecord
             [
                 'class' => AttributesUploadBehavior::className(),
                 'uploadRelation' => 'articleAttributes',
-                'attribute'      => 'article_attribute',
+                'attribute'      => 'article_attributes_apple_link',
                 'nameAttribute'  => 'name',
                 'valueAttribute' => 'value',
+                'tagAttribute'   => 'tag',
+            ],
+            [
+                'class' => AttributesUploadBehavior::className(),
+                'uploadRelation' => 'articleAttributes',
+                'attribute'      => 'article_attributes_android_link',
+                'nameAttribute'  => 'name',
+                'valueAttribute' => 'value',
+                'tagAttribute'   => 'tag',
             ],
 
         ];
@@ -195,7 +209,8 @@ class Article extends \yii\db\ActiveRecord
             'published_at' => Yii::t('common', 'Published At'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
-            'article_attributes' => Yii::t('common', 'Article Attributes')
+            'article_attributes_android_link' => Yii::t('common', 'Android Market link'),
+            'article_attributes_apple_link' => Yii::t('common', 'Apple Store link')
         ];
     }
 

@@ -34,6 +34,11 @@ class AttributesUploadBehavior extends Behavior
     public $valueAttribute;
 
     /**
+     * @var
+     */
+    public $tagAttribute;
+
+    /**
      * @var string name of the relation
      */
     public $uploadRelation;
@@ -73,6 +78,7 @@ class AttributesUploadBehavior extends Behavior
     }
 
     public function fillModelAttributes(){
+        var_dump($_POST);
         exit($this->valueAttribute." -- ".$this->nameAttribute);
     }
 
