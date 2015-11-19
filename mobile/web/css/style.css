@@ -85,7 +85,7 @@ a.desc:after {
     display: none;
 }
 .main-menu .main-menu-shadow{
-    width: 100%;
+    width: 53%;
     height: 100%;
     opacity: 0.5;
     z-index:1002;
@@ -93,7 +93,7 @@ a.desc:after {
     background-color: black;
 }
 .main-menu .left-menu{
-    width: 35%;
+    width: 36%;
     height: 100%;
     z-index:1003;
     position: absolute;
@@ -102,7 +102,7 @@ a.desc:after {
 .main-menu .main-menu-close {
     width:19px;
     height:19px;
-    left: 90%;
+    left: 44%;
     top: 3%;
     background: url('/img/menu_close.png');
     z-index:1003;
