@@ -10,6 +10,7 @@ namespace common\behaviors;
 use Yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
+use yii\base\InvalidParamException;
 
 /**
  * Class AttributeUploadBehavior
@@ -18,6 +19,16 @@ use yii\db\ActiveRecord;
  */
 class AttributesUploadBehavior extends Behavior
 {
+    /**
+     * @var ActiveRecord
+     */
+    public $owner;
+
+    /**
+     * @var behavior initializer
+     */
+    public $ownerName;
+
     /**
      * @var
      */
@@ -65,21 +76,35 @@ class AttributesUploadBehavior extends Behavior
     }
 
     public function afterUpdateArticle(){
-        $this->fillModelAttributes();
+
+        $this->loadModel()->update();
+        $this->owner->link($this->uploadRelation, $this->_model);
     }
 
 
     /**
      * @return mixed
      */
-    public function getAttributesModel(){
+    public function loadModel(){
         $relationQuery = $this->owner->getRelation($this->uploadRelation);
-        return new $relationQuery->modelClass();
+        $this->_model = new $relationQuery->modelClass;
+        $this->_model->article_id = $this->owner->id;
+        $this->_model->value = $this->_loadAttributes();
+        return $this->_model;
     }
 
-    public function fillModelAttributes(){
-        var_dump($_POST);
-        exit($this->valueAttribute." -- ".$this->nameAttribute);
+
+    /**
+     * Function load attributes
+     * @return mixed
+     * @throws \yii\base\InvalidParamException
+     */
+
+    protected function _loadAttributes(){
+        if(!$this->owner)
+            throw new InvalidParamException(get_class($this) . ' has empty owner var ');
+
+        return $this->owner->{$this->attribute};
     }
 
 }

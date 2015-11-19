@@ -19,7 +19,6 @@ use \yii\db\ActiveRecord;
  * @property string  tag
  * @property string  name
  * @property string  value
- *
  */
 class ArticleAttributes extends ActiveRecord
 {

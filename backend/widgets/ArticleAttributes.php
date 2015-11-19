@@ -8,6 +8,7 @@
 
 namespace backend\widgets;
 
+use yii\helpers\ArrayHelper;
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
 
@@ -17,18 +18,29 @@ use yii\helpers\Html;
  */
 class ArticleAttributes extends InputWidget
 {
+    /**
+     * @var
+     */
+    public $tag;
 
     public function init(){
         parent::init();
+        if ($this->hasModel()) {
+            //exit(var_dump($this->model->getArticleAttributes()));
+            $this->value = $this->value ?: Html::getAttributeValue($this->model, $this->attribute);
+        }
+        ArrayHelper::merge($this->options,[
+            $this->value,
+            $this->tag
+        ]);
     }
 
     public function run(){
-        //exit(Html::getInputId($this->model, $this->attribute));
         echo Html::beginTag('div', ['style' => 'position: relative']);
         if ($this->hasModel()) {
             echo Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
-            echo Html::textInput($this->name, $this->value, $this->options);
+            echo Html::textInput("test", "value12", $this->options);
         }
         echo Html::endTag('div');
     }

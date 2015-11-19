@@ -11,6 +11,7 @@ use yii\bootstrap\ActiveForm;
 
 <div class="article-form">
 
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -48,14 +49,13 @@ use yii\bootstrap\ActiveForm;
     ) ?>
 
     <?php
-/*      echo $form->field($model,'article_attributes_apple_link')->widget(\backend\widgets\ArticleAttributes::className(),[
+  /*    echo $form->field($model,'article_attributes_apple_link')->widget(\backend\widgets\ArticleAttributes::className(),[
           'options'=>[
-              'name'  => 'app_store',
               'tag'   => 'input',
-              'class' => 'form-control'
+              'class' => 'form-control',
           ]
-      ]);
-        echo $form->field($model,'article_attributes_android_link')->widget(\backend\widgets\ArticleAttributes::className(),[
+      ]);*/
+/*        echo $form->field($model,'article_attributes_android_link')->widget(\backend\widgets\ArticleAttributes::className(),[
             'options'=>[
                 'name'  => 'android_market',
                 'tag'   => 'input',
