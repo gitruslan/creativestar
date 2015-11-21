@@ -266,7 +266,7 @@ class Article extends \yii\db\ActiveRecord
      */
     public function getArticleAttributes()
     {
-        return $this->hasMany(ArticleAttributes::className(),['article_id' => 'id']);
+        return $this->hasOne(ArticleAttributes::className(),['article_id' => 'id']);
 
     }
 

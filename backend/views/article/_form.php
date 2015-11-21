@@ -49,12 +49,12 @@ use yii\bootstrap\ActiveForm;
     ) ?>
 
     <?php
-  /*    echo $form->field($model,'article_attributes_apple_link')->widget(\backend\widgets\ArticleAttributes::className(),[
+      echo $form->field($model,'article_attributes_apple_link')->widget(\backend\widgets\ArticleAttributes::className(),[
           'options'=>[
               'tag'   => 'input',
               'class' => 'form-control',
           ]
-      ]);*/
+      ]);
 /*        echo $form->field($model,'article_attributes_android_link')->widget(\backend\widgets\ArticleAttributes::className(),[
             'options'=>[
                 'name'  => 'android_market',

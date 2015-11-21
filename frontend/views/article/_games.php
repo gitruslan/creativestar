@@ -1,6 +1,7 @@
 <?php
     use \frontend\widgets\DropDownArticleList;
-    use common\widgets\DbArticleSlider;
+    use \common\widgets\DbArticleSlider;
+    use \yii\helpers\Html;
 
     /* @var $this yii\web\View */
     /* @var $model common\models\Article */
@@ -22,8 +23,13 @@
             <div class="game-title"><?php echo $model->title ?></div>
         </div>
         <div class="article-item-image-game">
+            <?php
+                if($model->articleAttributes){
+                    echo Html::a('',$model->articleAttributes->value,['class'=>$model->articleAttributes->name]);
+                }
+            ?>
             <?php if ($model->thumbnail_path): ?>
-                <?php echo \yii\helpers\Html::img(
+                <?php echo Html::img(
                     Yii::$app->glide->createSignedUrl([
                         'glide/index',
                         'path' => $model->thumbnail_path,

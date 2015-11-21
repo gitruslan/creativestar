@@ -515,6 +515,16 @@ a.desc:after {
     margin-top: -24px;
 }
 
+.article_attributes_apple_link{
+    position: absolute;
+    display: block;
+    width:122px;
+    height:44px;
+    top: 27%;
+    left: 80%;
+    background: url('/img/app_store_icon.png');
+}
+
 .about-us-wrapper{
     width:754px;
     height:308px;
