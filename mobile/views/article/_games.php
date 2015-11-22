@@ -1,5 +1,6 @@
 <?php
     use \frontend\widgets\DropDownArticleList;
+    use \yii\helpers\Html;
     use common\widgets\DbArticleSlider;
 
     /* @var $this yii\web\View */
@@ -22,6 +23,11 @@
        'category' => $model->category->slug,
        'name'=>'Choose game',
    ]); ?>
+    <?php
+        if($model->articleAttributes){
+            echo Html::a('',$model->articleAttributes->value,['class'=>$model->articleAttributes->name]);
+        }
+    ?>
     <div class="clear"></div>
         <div class="article-item-title-game">
             <div class="game-title"><?php echo $model->title ?></div>

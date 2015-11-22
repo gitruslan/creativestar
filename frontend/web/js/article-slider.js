@@ -5,7 +5,7 @@ var articleSlider = {
     items:0,
     _handlerControls:function(){
         articleSlider.items = articleSlider._getItems();
-        console.log(articleSlider._getRightPosition());
+      // console.log(articleSlider._getRightPosition());
         $('.article-slider .slider-control-left').unbind('click').click(function(event){
             if(articleSlider._getLeftPosition() == 0) return;
             $('#w1').animate({

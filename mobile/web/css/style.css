@@ -424,7 +424,16 @@ a.desc:after {
 .article-content{
     width:320px;
     min-height:100px;
-
+    position: relative;
+}
+.article_attributes_apple_link{
+    position: absolute;
+    display: block;
+    width:82px;
+    height:30px;
+    top: 0.5%;
+    left: 2%;
+    background: url('/img/app_store_icon.png');
 }
 
 .article-item-title-game{
@@ -790,4 +799,4 @@ a.desc:after {
     font-size:14px;
 }
 /*end terms of use */
-/*# sourceMappingURL=style.map */
+
