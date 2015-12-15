@@ -24,6 +24,6 @@ use yii\helpers\Html;
         <?php endif; ?>
     </a>
         <div class="article-short-text">
-            <?php echo \yii\helpers\StringHelper::truncate($article->body, 150)?>
+            <?php echo \yii\helpers\StringHelper::truncate(strip_tags($article->body,'br'), 150)?>
         </div>
 </div>
