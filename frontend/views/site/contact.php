@@ -9,6 +9,8 @@ use yii\captcha\Captcha;
 
 $this->title = 'Contacts';
 $this->params['breadcrumbs'][] = $this->title;
+Yii::$app->params['description'] = 'Here you can contact with us';
+Yii::$app->params['keywords'] = 'contacts';
 ?>
 <div class="site-contact">
     <div class="row">

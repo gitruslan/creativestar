@@ -1,0 +1,17 @@
+###############Header##############
+w/h 320/54 
+bg-color - #f1b116
+          ##########mainmenu########
+text - Arial bold 17 pt #4d5354 (active-color: #ebb229)
+bg-color - #f8f0d8
+###################content##########
+bg-color - #39e5f9
+            ##########slider#########
+w/h 320/245 (image height - 200)
+            ###########text under slider#######
+text - Arial Regular 14pt black
+###################footer###########
+bg-color - #0b393e
+             #############menu#############
+text -Arial bold 12 pt  #39e5f9 
+text (rights) - Arial Regula 10 pt #22757e    

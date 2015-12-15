@@ -269,7 +269,11 @@ a.desc:after {
 .carousel-inner{
     padding: 20px 0 0 18px;
 }
+.carousel .carousel-indicators {
+    top: 428px;
+}
 .carousel .carousel-indicators li {
+
     width: 28px;
     height: 38px;
     background: url("/img/sprite_slider.png");
@@ -378,6 +382,14 @@ a.desc:after {
     margin:100px 0 0 250px;
     position: absolute;
     z-index:2;
+}
+.footer-owners .terms-privacy{
+    width: 200px;
+    margin-left: -31px;
+}
+.footer-owners .terms-privacy a{
+    text-decoration: underline;
+    color:#333;
 }
 #article-index{
     width: 715px;
@@ -503,6 +515,16 @@ a.desc:after {
     margin-top: -24px;
 }
 
+.article_attributes_apple_link{
+    position: absolute;
+    display: block;
+    width:122px;
+    height:44px;
+    top: 29%;
+    left: 79%;
+    background: url('/img/app_store_icon.png');
+}
+
 .about-us-wrapper{
     width:754px;
     height:308px;
@@ -545,6 +567,28 @@ a.desc:after {
     left: -11px;
     top: 345px;
     z-index: 4;
+}
+
+.privacy-terms-wrapper {
+    width:754px;
+    min-height:300px;
+    margin:0 auto;
+    margin-bottom:160px;
+    color: #084349;
+    font-size: 19px;
+    position: relative;
+    border:1px solid #fff;
+    border-radius: 15px;
+    top: 50px;
+    background: rgba(255,255,255,0.6);
+    z-index:3;
+
+}
+.privacy-terms-wrapper .body-text{
+    width:754px;
+    min-height:300px;
+    padding: 30px 26px;
+    border-radius: 15px;
 }
 
 .site-contact{
@@ -861,4 +905,3 @@ a.desc:after {
     z-index: 3;
 }
 /*end slider article*/
-/*# sourceMappingURL=style.map */

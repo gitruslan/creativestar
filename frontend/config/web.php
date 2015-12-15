@@ -25,6 +25,10 @@ $config = [
                 ]
             ]
         ],
+        'mobileDetection' =>[
+            'class' => 'rlabuta\mobiledetect\MobileDetect',
+            'autoRedirectToMobile' => Yii::getAlias('@mobileUrl'),
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error'
         ],
@@ -38,7 +42,12 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ]
-    ]
+    ],
+  'params' => [
+        'mobiledetect' => [
+        'autoRedirectToMobile' => 'http://mobile.env.in.ua'
+      ]
+ ]
 ];
 
 if (YII_ENV_DEV) {

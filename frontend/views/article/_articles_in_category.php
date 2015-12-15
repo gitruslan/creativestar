@@ -12,7 +12,7 @@ use yii\helpers\Html;
             <?=$article->title;?>
         </h2>
         <?php if ($article->thumbnail_path): ?>
-            <?php echo Html::img(
+            <?php echo Html::a(Html::img(
                 Yii::$app->glide->createSignedUrl([
                     'glide/index',
                     'path' => $article->thumbnail_path,
@@ -20,14 +20,14 @@ use yii\helpers\Html;
                     'h' => 186
                 ], true),
                 ['class' => 'article-thumb img-rounded pull-left']
-            ) ?>
+            ),$article->category->slug.'/'.$article->slug); ?>
         <?php endif; ?>
         <div class="article-content">
             <?php if ($article->category->slug == 'blog'):?>
                 <div class="article-date"><?=date('d M Y',$article->published_at)?></div>
             <?php endif;?>
             <div class="article-right-text">
-                <?php echo \yii\helpers\StringHelper::truncate($article->body, 150)?>
+                <?php echo \yii\helpers\StringHelper::truncate(strip_tags($article->body,'br'), 150)?>
             </div>
             <div class="article-more">
                 <?php echo Html::a(Yii::t('frontend', 'MORE'),$article->category->slug.'/'.$article->slug) ?>

@@ -1,4 +1,7 @@
 <?php
 /**
- * @author Eugene Terentev <eugene@terentev.net>
+ * @author Labuta Ruslan
  */
+ //Path aliases
+
+// Url Aliases

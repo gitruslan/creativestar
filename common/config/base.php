@@ -1,6 +1,6 @@
 <?php
 $config = [
-    'name'=>'CreativeStar',
+    'name'=>'Creativistar',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage'=>'en-US',
@@ -136,6 +136,12 @@ $config = [
             ],
             require(Yii::getAlias('@frontend/config/_urlManager.php'))
         ),
+        'urlManagerMobile' => \yii\helpers\ArrayHelper::merge(
+                [
+                    'hostInfo'=>Yii::getAlias('@mobileUrl')
+                ],
+                require(Yii::getAlias('@mobile/config/_urlManager.php'))
+            ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo'=>Yii::getAlias('@storageUrl')
@@ -152,6 +158,8 @@ $config = [
             'uk-UA'=>'Українська (Україна)',
             'es' => 'Español'
         ],
+        'description' => '',
+        'keywords'    => ''
     ],
 ];
 
