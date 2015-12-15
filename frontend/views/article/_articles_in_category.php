@@ -27,7 +27,7 @@ use yii\helpers\Html;
                 <div class="article-date"><?=date('d M Y',$article->published_at)?></div>
             <?php endif;?>
             <div class="article-right-text">
-                <?php echo \yii\helpers\StringHelper::truncate($article->body, 150)?>
+                <?php echo \yii\helpers\StringHelper::truncate(strip_tags($article->body,'br'), 150)?>
             </div>
             <div class="article-more">
                 <?php echo Html::a(Yii::t('frontend', 'MORE'),$article->category->slug.'/'.$article->slug) ?>
