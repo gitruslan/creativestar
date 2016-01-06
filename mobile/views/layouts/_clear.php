@@ -14,6 +14,7 @@ use yii\helpers\Html;
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <?php echo Html::csrfMetaTags() ?>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
 <?php $this->beginBody() ?>
